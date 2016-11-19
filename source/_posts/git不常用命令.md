@@ -11,6 +11,8 @@ tags: [git,读书笔记]
 * `git rev-parse --show-prefix`	所在目录相对于工作区根目录的相对目录
 * `git rev-parse --show-cdup`	显示从当前目录后退到工作区的根的身度
 
+<!--more-->
+ 
 ## git commit --amend --allow-empty --reset-author
 * `--amend`:修改刚才的提交
 * `--allow-empty`:允许提交空白
