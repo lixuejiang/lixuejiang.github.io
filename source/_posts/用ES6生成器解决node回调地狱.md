@@ -54,11 +54,11 @@ gen.send(8); // { value: 13, done: true }
 * 可以像调用函数一样调用生成器。但是他只返回一个生成器对象。你需要调用next方法唤起生成器的继续执行。当需要给生成器传值的时候，调用send方法。`gen.next()`和`gen.next()`等价。`gen.throw`从生成器内部抛出一个异常
 * 生成器不好返回原生值，而是返回一个有两个属性的对象：value和done。这样就很容易判断一个生成器是否执行结束。而不是像老的api一样抛出停止迭代的异常
 
-## 异步解决方案1：暂停
+## 异步解决方案1：suspend
 你也许会问上面的代码到底是怎么解决node的回调地狱的。其实，如果我们可以暂停一个函数的执行。我们就可以通过一些语法糖，让异步的回调看上去像同步的一样。
 
 问题来了：什么是语法糖？
-第一个解决方案是[暂停库](https://github.com/jmar777/suspend)。他是我们能想到的最简单的方式了。只有16行[代码](https://github.com/jmar777/suspend/blob/master/lib/suspend.js)
+第一个解决方案是[suspend库](https://github.com/jmar777/suspend)。他是我们能想到的最简单的方式了。只有16行[代码](https://github.com/jmar777/suspend/blob/master/lib/suspend.js)
 
 用这个库的代码像这样：
 
@@ -76,7 +76,7 @@ suspend(function*(resume) {
 })();
 
 ```
-暂停函数把生成器转换成了一个一般的函数。它给生成传递一个resume函数，作为异步函数的回调。另外它会通过一个含有error和value两个值的数组唤醒生成器。
+suspend函数把生成器转换成了一个一般的函数。它给生成传递一个resume函数，作为异步函数的回调。另外它会通过一个含有error和value两个值的数组唤醒生成器。
 
 生成器和resume之间的关系很有意思，但是它也有弊端。首先，返回一个两个元素的数组很烦人，即使用解构（var [err, res] = yield foo(resume)）。我更倾向于返回一个值，如果有错误就抛出异常。看上去这个库支持这个选项，但是我认为应该把它作为默认值。
 
