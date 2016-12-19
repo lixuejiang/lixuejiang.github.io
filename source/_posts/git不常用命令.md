@@ -33,3 +33,8 @@ tags: [git,读书笔记]
 * `git diff --cached` 暂存区和HEAD比较
 * `git diff HEAD` 工作区和HEAD比较
 
+
+## git 练习项目
+
+* [githug](https://gold.xitu.io/entry/5684844560b2cd25b7cb41a3)
+* [http://learngitbranching.js.org/ ](http://learngitbranching.js.org/)
