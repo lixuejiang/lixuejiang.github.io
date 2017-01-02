@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>DOM是一个烂摊子 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文翻译自DOM is a mess,主要讲了dom方法在不同的浏览器里存在的一些bug
+混乱的DOM几乎每一个DOM方法在某个浏览器里都存在某种问题
+一些老方法如：getElementById这似乎是最常用的dom方法，但是也有一些很奇怪的地方：
+
+IE和老版本的Opera会返回name == id 的元素
+在xml里不能很好的工作
+
+getElementByTagName似乎是比较常用的dom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM是一个烂摊子">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/09/25/DOM是一个烂摊子/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="本文翻译自DOM is a mess,主要讲了dom方法在不同的浏览器里存在的一些bug
+混乱的DOM几乎每一个DOM方法在某个浏览器里都存在某种问题
+一些老方法如：getElementById这似乎是最常用的dom方法，但是也有一些很奇怪的地方：
+
+IE和老版本的Opera会返回name == id 的元素
+在xml里不能很好的工作
+
+getElementByTagName似乎是比较常用的dom">
+<meta property="og:image" content="http://ggbond.qiniudn.com/kye.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/fon.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/find.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/unique.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/find1.png">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM是一个烂摊子">
+<meta name="twitter:description" content="本文翻译自DOM is a mess,主要讲了dom方法在不同的浏览器里存在的一些bug
+混乱的DOM几乎每一个DOM方法在某个浏览器里都存在某种问题
+一些老方法如：getElementById这似乎是最常用的dom方法，但是也有一些很奇怪的地方：
+
+IE和老版本的Opera会返回name == id 的元素
+在xml里不能很好的工作
+
+getElementByTagName似乎是比较常用的dom">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/kye.png">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-DOM是一个烂摊子" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/25/DOM是一个烂摊子/" class="article-date">
+  	<time datetime="2016-09-25T12:12:17.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DOM是一个烂摊子
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文翻译自<a href="http://www.slideshare.net/jeresig/the-dom-is-a-mess-yahoo" target="_blank" rel="external">DOM is a mess</a>,主要讲了dom方法在不同的浏览器里存在的一些bug</p>
+<h1 id="混乱的DOM"><a href="#混乱的DOM" class="headerlink" title="混乱的DOM"></a>混乱的DOM</h1><p>几乎每一个DOM方法在某个浏览器里都存在某种问题</p>
+<h2 id="一些老方法如："><a href="#一些老方法如：" class="headerlink" title="一些老方法如："></a>一些老方法如：</h2><h3 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById"></a>getElementById</h3><p>这似乎是最常用的dom方法，但是也有一些很奇怪的地方：</p>
+<ul>
+<li>IE和老版本的Opera会返回name == id 的元素</li>
+<li>在xml里不能很好的工作</li>
+</ul>
+<h3 id="getElementByTagName"><a href="#getElementByTagName" class="headerlink" title="getElementByTagName"></a>getElementByTagName</h3><p>似乎是比较常用的dom方法，在ie里也是漏洞百出</p>
+<ul>
+<li>‘*’在IE 5.5返回空元素</li>
+<li>‘*’在IE7里如果是<code>object</code>则返回空元素</li>
+<li>在IE里，如果一个元素的ID是<code>length</code>,则<code>.length</code>会被重写</li>
+</ul>
+<a id="more"></a>
+<h2 id="一些新的方法如："><a href="#一些新的方法如：" class="headerlink" title="一些新的方法如："></a>一些新的方法如：</h2><h3 id="getElementByClassName"><a href="#getElementByClassName" class="headerlink" title="getElementByClassName"></a>getElementByClassName</h3><p>这个方法在FF 3，Safari 3 Opera 9.6里实现，存在一些已知的bug：</p>
+<ul>
+<li>在火狐里不能复写<code>HTMLElemet.prototype.getElementByClassName</code>方法</li>
+<li>Opera不能匹配第二个类（e.g. class=’a b’,不能匹配b）</li>
+</ul>
+<h3 id="querySelectorAll"><a href="#querySelectorAll" class="headerlink" title="querySelectorAll"></a>querySelectorAll</h3><p>该方法用css选择器查找dom元素，FF 3.1,Safari 3.1 opera 10，IE8里实现实现了这个方法，存在的bug：</p>
+<ul>
+<li>IE8的混合模式不支持该方法</li>
+<li>Safari 3.1存在内存泄露</li>
+<li>Safari 3.2在混合模式下不能匹配大写字母的选择器</li>
+<li>在xml里不能匹配<code>#id</code>选择器</li>
+</ul>
+<h1 id="编写跨浏览器的代码"><a href="#编写跨浏览器的代码" class="headerlink" title="编写跨浏览器的代码"></a>编写跨浏览器的代码</h1><p>策略：</p>
+<h2 id="选择你的浏览器"><a href="#选择你的浏览器" class="headerlink" title="选择你的浏览器"></a>选择你的浏览器</h2><p>需要了解各个浏览器的市场占有率，操作系统情况</p>
+<h2 id="了解你的敌人"><a href="#了解你的敌人" class="headerlink" title="了解你的敌人"></a>了解你的敌人</h2><p><img src="http://ggbond.qiniudn.com/kye.png" alt="http://ggbond.qiniudn.com/kye.png"></p>
+<h3 id="浏览器bugs"><a href="#浏览器bugs" class="headerlink" title="浏览器bugs"></a>浏览器bugs</h3><p>这是你主要的关注点，你的防守策略是要有一个很好的测试套件来阻止库的回退和应对浏览器的新版本的发布，而进攻策略应该是特性模拟<br>什么是bug：是那些没有指定，没有文档，表现怪异的行为吗？<br>针对浏览器bug，你只有不停的测试。</p>
+<h3 id="外部代码"><a href="#外部代码" class="headerlink" title="外部代码"></a>外部代码</h3><p>使你的代码能经受任何环境的考验：</p>
+<ul>
+<li>通过反复试验</li>
+<li>继承其他的库或者奇怪的代码到你的测试套件</li>
+</ul>
+<h3 id="环境测试"><a href="#环境测试" class="headerlink" title="环境测试"></a>环境测试</h3><p>需要100%通过的测试项：</p>
+<ul>
+<li>标准模式</li>
+<li>怪异模式</li>
+<li>和prototype以及scriptaculous的集成</li>
+<li>和Mootools的集成</li>
+</ul>
+<h3 id="污染"><a href="#污染" class="headerlink" title="污染"></a>污染</h3><h4 id="确保你的代码不会打断外部代码"><a href="#确保你的代码不会打断外部代码" class="headerlink" title="确保你的代码不会打断外部代码"></a>确保你的代码不会打断外部代码</h4><ul>
+<li>使用严格模式的命名空间</li>
+<li>不要扩展外部的对象和元素</li>
+</ul>
+<h4 id="不好的做法"><a href="#不好的做法" class="headerlink" title="不好的做法"></a>不好的做法</h4><ul>
+<li>使用全局变量</li>
+<li>扩展原生对象（Array，Object）</li>
+<li>扩展原生DOM</li>
+</ul>
+<h3 id="特性缺失"><a href="#特性缺失" class="headerlink" title="特性缺失"></a>特性缺失</h3><ul>
+<li>典型的例子就是老实浏览器缺失一些指定的特性</li>
+<li>最佳方案是优雅降级，回退到一个简单的页面</li>
+<li>不要对不支持的浏览器做出假设，对于不能测试的浏览器，需要提供一个平滑的回滚</li>
+<li>对象检测能很好的工作</li>
+</ul>
+<h3 id="对象检测"><a href="#对象检测" class="headerlink" title="对象检测"></a>对象检测</h3><ul>
+<li>检测对象或者属性是否存在</li>
+<li>检测api是否存在</li>
+<li>不要测试API的兼容性，bug可能会依然存在，需要通过特性模拟来分开测试这些api</li>
+</ul>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function attachEvent(elem,type, handle)&#123;</div><div class="line">	if(elem.addEventListener)&#123;</div><div class="line">		elem.addEventListener(type,handle,false);</div><div class="line">	&#125;else if(elem.attachEvent)&#123;</div><div class="line">		elem.attachEvent(&apos;on&apos;+ type,handle);</div><div class="line">	&#125;else&#123;</div><div class="line">		elem[&apos;on&apos;+type] = handle;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="特性模拟"><a href="#特性模拟" class="headerlink" title="特性模拟"></a>特性模拟</h3><ul>
+<li>比对象检测更先进</li>
+<li>确保API能像宣传的那样工作</li>
+<li>能平滑的解决bug</li>
+</ul>
+<h3 id="校验API"><a href="#校验API" class="headerlink" title="校验API"></a>校验API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//运行一次，在程序开始的地方</div><div class="line">var ELEMENTS_ONLY = (function()&#123;</div><div class="line">	var div = document.createElement(&apos;div&apos;);</div><div class="line">	div.appendChild(document.createComment(&apos;test&apos;));</div><div class="line">	return div.getElementsByTagName(&apos;*&apos;).length === 0;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">var all = document.getElementsByTagName(&apos;*&apos;);</div><div class="line"></div><div class="line">if(ELEMENTS_ONLY)&#123;</div><div class="line">	for (var i = 0; i &lt; all.length; i++) &#123;</div><div class="line">		action(all[i]);</div><div class="line">	&#125;;</div><div class="line">&#125;else&#123;</div><div class="line">	for (var i = all.length - 1; i &gt;= 0; i--) &#123;</div><div class="line">		if(all[i].nodeType === 1)&#123;</div><div class="line">			action(all[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="弄清楚命名"><a href="#弄清楚命名" class="headerlink" title="弄清楚命名"></a>弄清楚命名</h3><p><img src="http://ggbond.qiniudn.com/fon.png" alt="弄清楚命名"></p>
+<h3 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h3><ul>
+<li>删除或者修改未指定的api</li>
+<li>对象检测也有用</li>
+<li>模拟积极发布的浏览器，所有的厂商都会提供beta的版本</li>
+</ul>
+<h3 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h3><p>有很多种DOM遍历的方法</p>
+<h4 id="传统的DOM遍历方法"><a href="#传统的DOM遍历方法" class="headerlink" title="传统的DOM遍历方法"></a>传统的DOM遍历方法</h4><ul>
+<li>getElementsByTagName</li>
+<li>getElementById</li>
+<li>getElementsByClassName</li>
+<li>.children</li>
+<li>getElementsByName</li>
+<li>.all[id]</li>
+</ul>
+<h3 id="自上而下的css选择器"><a href="#自上而下的css选择器" class="headerlink" title="自上而下的css选择器"></a>自上而下的css选择器</h3><ul>
+<li>传统的样式遍历，被大多数库使用</li>
+<li>从左到右匹配</li>
+<li><code>div p</code> :查找所有的div，找到里面的段落</li>
+<li>需要对结果进行merge</li>
+<li>需要删掉重复的元素</li>
+</ul>
+<p><img src="http://ggbond.qiniudn.com/find.png" alt="元素查找"><br><img src="http://ggbond.qiniudn.com/unique.png" alt="http://ggbond.qiniudn.com/unique.png"></p>
+<h3 id="自下而上的选择器"><a href="#自下而上的选择器" class="headerlink" title="自下而上的选择器"></a>自下而上的选择器</h3><ul>
+<li>从右到左匹配</li>
+<li><code>div p</code>:找到所有的段落，看是否有div的祖先</li>
+<li><code>div #foo</code>查询更快</li>
+<li>比较而言，<code>#foo div</code>查询更慢</li>
+</ul>
+<p>一些很好的特性</p>
+<ul>
+<li>只有一次DOM查询</li>
+<li>不需要merge</li>
+<li>每次处理都是一次过滤<br><img src="http://ggbond.qiniudn.com/find1.png" alt="http://ggbond.qiniudn.com/find1.png"></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/25/DOMinsertAdjacentHTML/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          DOM insertAdjacentHTML
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/21/webkit技术内幕读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webkit技术内幕读书笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="DOM是一个烂摊子" data-title="DOM是一个烂摊子" data-url="http://www.lixuejiang.me/2016/09/25/DOM是一个烂摊子/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

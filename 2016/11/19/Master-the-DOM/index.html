@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>Master the DOM | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文DOM操作并没有你想象的那么难。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Master the DOM">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/11/19/Master-the-DOM/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="原文DOM操作并没有你想象的那么难。">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-19%2016:15:16.png">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Master the DOM">
+<meta name="twitter:description" content="原文DOM操作并没有你想象的那么难。">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/2016-11-19%2016:15:16.png">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Master-the-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/19/Master-the-DOM/" class="article-date">
+  	<time datetime="2016-11-19T08:12:15.000Z" itemprop="datePublished">2016-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Master the DOM
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://medium.com/re-dom/master-the-dom-bc1a2a06089b#.e70uoue0i" target="_blank" rel="external">原文</a><br>DOM操作并没有你想象的那么难。<br><img src="http://ggbond.qiniudn.com/2016-11-19%2016:15:16.png" alt="http://ggbond.qiniudn.com/2016-11-19%2016:15:16.png"></p>
+<a id="more"></a>
+<h2 id="初步介绍"><a href="#初步介绍" class="headerlink" title="初步介绍"></a>初步介绍</h2><p>许多web开发者认为DOM真的很难（或者很慢），你需要很多框架来驯服它。然后他们花了很多时间来学习框架，一两年过去之后，另一个框架变得流行，你需要从头开始学习一切。这样重复几次，JavaScript疲劳就出现了。更不用说一大堆依赖。<br>如果我告诉你DOM没有那么难，你会相信吗？如果不需要依赖第三方的库来掌握DOM是不是很酷，你会再给DOM一次机会吗？我们一起来看看：</p>
+<blockquote>
+<p>DOM is not that hard and especially not slow.</p>
+</blockquote>
+<p>首先，我会展示一些基本的技巧，来自于我自己的个人库<a href="https://redom.js.org/" target="_blank" rel="external">RE:DOM</a></p>
+<h2 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h2><p>让我们开始创建HTML元素，为了创建元素，你需要用document.createElement(tagName) 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const h1 = document.createElement(&apos;h1&apos;)</div><div class="line">// &lt;h1&gt;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<h2 id="修改文本内容"><a href="#修改文本内容" class="headerlink" title="修改文本内容"></a>修改文本内容</h2><p>如果html元素没有内容，显示出来就是空的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">h1.textContent = &apos;Hello world!&apos;</div><div class="line">// &lt;h1&gt;Hello world!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<h2 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">h1.setAttribute(&apos;class&apos;, &apos;hello&apos;)</div><div class="line">// &lt;h1 class=&quot;hello&quot;&gt;Hello world!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<p>为了管理类，用element.className属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">h1.className = &apos;hello&apos;</div><div class="line">// &lt;h1 class=&quot;hello&quot;&gt;Hello world!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<p>然而，最好的办法还是用classList</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">h1.classList.add(&apos;hello&apos;)</div><div class="line">// &lt;h1 class=&quot;hello&quot;&gt;Hello world!&lt;/h1&gt;</div><div class="line">h1.classList.remove(&apos;hello&apos;)</div><div class="line">// &lt;h1&gt;Hello world!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<p>要设置元素的ID,你可以用attribute或者直接设置id属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1.setAttribute(&apos;id&apos;, &apos;hello-world&apos;)</div><div class="line">h1.id = &apos;hello-world&apos;</div><div class="line">// &lt;h1 id=&quot;hello-world&quot; class=&quot;hello&quot;&gt;Hello world!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你不确定是用attributes还是properties，那就用attributes，除了表单元素的状态，像value和checked</p>
+</blockquote>
+<p>除了下面这些，你不能用element.setAttribute(someBoolean, false)来设置bool值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">input.checked = true</div><div class="line">// &lt;input checked&gt;</div><div class="line">input.checked = false</div><div class="line">// &lt;input&gt;</div><div class="line">input.setAttribute(‘checked’, ‘’)</div><div class="line">// &lt;input checked&gt;</div><div class="line">input.removeAttribute(&apos;checked&apos;)</div><div class="line">// &lt;input&gt;</div></pre></td></tr></table></figure>
+<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">document.body.appendChild(h1)</div><div class="line">// &lt;body&gt;&lt;h1&gt;Hello world!&lt;/h1&gt;&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">document.body.removeChild(h1)</div><div class="line">// &lt;body&gt;&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h2 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h2><ul>
+<li>document.getElementById(id)</li>
+<li>element.childNodes[i]</li>
+<li>element.firstChild === element.childNodes[0]</li>
+<li>element.lastChild === element.childNodes[element.childNodes.length - 1]</li>
+<li>element.getElementsByTagName(tagName)</li>
+<li>element.getElementsByClassName(className)</li>
+<li>element.querySelector(query)</li>
+<li>element.querySelectorAll(query)</li>
+</ul>
+<p>注意：getElementsByTagName, getElementsByClassName 和 querySelectorAll返回的不是数组，而是一个NodeList，所以不能用ES5的数组迭代器迭代，<a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList#Workarounds" target="_blank" rel="external">这里</a>有一些关于NodeList的介绍</p>
+<h2 id="元素之间插入元素"><a href="#元素之间插入元素" class="headerlink" title="元素之间插入元素"></a>元素之间插入元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> *  &lt;body&gt;</div><div class="line"> *    &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</div><div class="line"> *  &lt;/body&gt;</div><div class="line"> */</div><div class="line">document.body.insertBefore(h1, document.body.firstChild)</div><div class="line">/*  &lt;body&gt;</div><div class="line"> *    &lt;h1&gt;Hello world!&lt;/h1&gt;</div><div class="line"> *    &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</div><div class="line"> *  &lt;/body&gt;</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="创建很多元素"><a href="#创建很多元素" class="headerlink" title="创建很多元素"></a>创建很多元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">const data = [</div><div class="line">  [ 1, 2, 3 ],</div><div class="line">  [ 4, 5, 6 ],</div><div class="line">  [ 7, 8, 9 ]</div><div class="line">]</div><div class="line"></div><div class="line">const table = document.createElement(&apos;table&apos;)</div><div class="line"></div><div class="line">data.forEach(row =&gt; &#123;</div><div class="line">  const tr = document.createElement(&apos;tr&apos;)</div><div class="line"></div><div class="line">  row.forEach(cell =&gt; &#123;</div><div class="line">    const td = document.createElement(&apos;td&apos;)</div><div class="line">    </div><div class="line">    td.textContent = cell</div><div class="line">    tr.appendChild(td)</div><div class="line"> &#125;)</div><div class="line"></div><div class="line">  table.appendChild(tr)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">document.body.appendChild(table)</div></pre></td></tr></table></figure>
+<h2 id="更新一系列元素"><a href="#更新一系列元素" class="headerlink" title="更新一系列元素"></a>更新一系列元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">const table = document.createElement(&apos;table&apos;)</div><div class="line"></div><div class="line">document.body.appendChild(table)</div><div class="line"></div><div class="line">updateTable(table, [</div><div class="line">  [ 1, 2 ],</div><div class="line">  [ 3, 4, 5 ],</div><div class="line">  [ 6, 7, 8, 9 ]</div><div class="line">])</div><div class="line"></div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">  updateTable(table, [</div><div class="line">    [ 1, 2, 3, 4 ],</div><div class="line">    [ 5, 6, 7 ],</div><div class="line">    [ 8, 9 ]</div><div class="line">  ])  </div><div class="line">&#125;, 1000)</div><div class="line"></div><div class="line">function updateTable (table, data) &#123;</div><div class="line">  const rowLookup = table._lookup || (table._lookup = [])</div><div class="line">  </div><div class="line">  setChildren(table, updateRows(rowLookup, data))</div><div class="line">&#125;</div><div class="line"></div><div class="line">function updateRows (rowLookup, rows) &#123;</div><div class="line">	return rows.map((row, y) =&gt; &#123;</div><div class="line">    const tr = rowLookup[y] || (rowLookup[y] = document.createElement(&apos;tr&apos;))</div><div class="line">    const cellLookup = tr._lookup || (tr._lookup = [])</div><div class="line"></div><div class="line">    setChildren(tr, updateCells(cellLookup, row))</div><div class="line"></div><div class="line">    return tr</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function updateCells (cellLookup, cells) &#123;</div><div class="line">	return cells.map((cell, x) =&gt; &#123;</div><div class="line">    const td = cellLookup[x] || (cellLookup[x] = document.createElement(&apos;td&apos;))</div><div class="line"></div><div class="line">    td.textContent = cell</div><div class="line"></div><div class="line">    return td</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function setChildren (parent, children) &#123;</div><div class="line">  let traverse = parent.firstChild</div><div class="line"></div><div class="line">  for (let i = 0; i &lt; children.length; i++) &#123;</div><div class="line">    const child = children[i]</div><div class="line">  </div><div class="line">    if (child == null) &#123;</div><div class="line">      return</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    if (child === traverse) &#123;</div><div class="line">      traverse = traverse.nextSibling</div><div class="line">    &#125; else if (traverse) &#123;</div><div class="line">      parent.insertBefore(child, traverse)</div><div class="line">    &#125; else &#123;</div><div class="line">      parent.appendChild(child)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  while (traverse) &#123;</div><div class="line">    const next = traverse.nextSibling</div><div class="line"></div><div class="line">    parent.removeChild(traverse)</div><div class="line">    </div><div class="line">    traverse = next</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是什么魔法？这里发生了两件事：</p>
+<ul>
+<li>1.这里有一个隐藏的元素element._lookup = []，用来查找子元素（可能是一个有id的元素），用这个方法我们可以重复利用已经存在的dom，更新他们</li>
+<li>2.setChildren(parent, children)方法里有包含子元素的列表</li>
+</ul>
+<p>你还可以用setChildren方法来mount/unmount子元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setChildren(login, [</div><div class="line">  email,</div><div class="line">  !forgot &amp;&amp; pass</div><div class="line">])</div></pre></td></tr></table></figure>
+<p>后面是作者的RE:DOM的广告。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/27/7种方式实现web下划线/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          7种方式实现web下划线
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/08/git不常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git不常用命令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Master-the-DOM" data-title="Master the DOM" data-url="http://www.lixuejiang.me/2016/11/19/Master-the-DOM/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>CSS的font family什么时候需要引号 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文，如果你也对font family在什么情况下要加引号和转义很困惑，这篇文章也许能帮到你。
+font-family: &amp;#39;Comic Sans MS&amp;#39;的引号到底需不需要？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS的font family什么时候需要引号">
+<meta property="og:url" content="http://www.lixuejiang.me/2017/01/02/css的font-family什么时候需要引号/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="原文，如果你也对font family在什么情况下要加引号和转义很困惑，这篇文章也许能帮到你。
+font-family: &amp;#39;Comic Sans MS&amp;#39;的引号到底需不需要？">
+<meta property="og:image" content="http://ggbond.qiniudn.com/validator@2x.png">
+<meta property="og:updated_time" content="2017-01-02T08:22:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS的font family什么时候需要引号">
+<meta name="twitter:description" content="原文，如果你也对font family在什么情况下要加引号和转义很困惑，这篇文章也许能帮到你。
+font-family: &amp;#39;Comic Sans MS&amp;#39;的引号到底需不需要？">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/validator@2x.png">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-css的font-family什么时候需要引号" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/02/css的font-family什么时候需要引号/" class="article-date">
+  	<time datetime="2017-01-02T02:15:22.000Z" itemprop="datePublished">2017-01-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS的font family什么时候需要引号
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://mathiasbynens.be/notes/unquoted-font-family" target="_blank" rel="external">原文</a>，如果你也对font family在什么情况下要加引号和转义很困惑，这篇文章也许能帮到你。</p>
+<p><code>font-family: &#39;Comic Sans MS&#39;</code>的引号到底需不需要？</p>
+<a id="more"></a>
+<p>根据 <a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="external">css校验器</a>的规则，这里的引号是需要的，因为font family里含有空格：</p>
+<blockquote>
+<p>字体族的名字里如果含有空格，需要用引号包含起来。如果引号被省略，名字前后的空格会被忽略，而且所有的名字里面的空格都会被合并成一个空格。</p>
+</blockquote>
+<p>但是这是<a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=16362" target="_blank" rel="external">错误的</a>.该警告消息说，所有的包含空格的font family都需要用引号，这是不对的。<code>font-family: Comic Sans MS</code>(没有引号)也是完全正确的css，也能按照期望的方式工作。</p>
+<p>在现实中，情况也许比这个更复杂，要像完全理解css font family的规则，我们需要先搞清楚css 字符串和标识符之间的区别</p>
+<h1 id="字符串和标识符"><a href="#字符串和标识符" class="headerlink" title="字符串和标识符"></a>字符串和标识符</h1><p>关于<a href="https://www.w3.org/TR/CSS2/syndata.html#strings" target="_blank" rel="external">字符串</a>,w3c规范是这样说的：</p>
+<blockquote>
+<p>字符串可以放在单引号也可以放在双引号里</p>
+</blockquote>
+<p>而<a href="https://www.w3.org/TR/CSS2/syndata.html#value-def-identifier" target="_blank" rel="external">标识符</a>的定义如下：</p>
+<blockquote>
+<p>在CSS里，标识符(包括元素名称，类名，选择器里的ID)只能包含字符[a-zA-Z0-9]，ISO 10646里比U+00A0大的字符，还有连字符（-）和下划线（_）</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Universal_Coded_Character_Set" target="_blank" rel="external">ISO 10646</a>定义了全局字符集，和Unicode标准相关。需要注意的是，这里说的是hyphen-minus，而不是hyphen（我并不知道他们到底说的是什么），hyphen的Unicode编码是U+2010，而hyphen-minus的编码是U+002D，下划线是U+005。Unicode允许的最大编码是U+10FFFF，所以所有满足正则表达式[-_a-zA-Z0-9\u00A0-\u10FFFF]的字符在标识符里都是允许的。</p>
+<p>规范里还说：</p>
+<blockquote>
+<p>标识符不能以数字，两个下划线后者一个下划线后面跟一个数字开头。标识符也能包含转义字符还有ISO 10646定义的数字编码。举个例子：<code>B&amp;W?</code>应该写成<code>B\&amp;W\?</code>或者<code>B\&amp;W\?</code>.</p>
+</blockquote>
+<p>翻译成正则：所有满足<code>^(-?\d|--)</code>的都不是合法的标识符</p>
+<h1 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h1><p><a href="https://www.w3.org/TR/CSS21/fonts.html#font-family-prop" target="_blank" rel="external">CSS2.1</a>和<a href="http://dev.w3.org/csswg/css3-fonts/#font-family-prop" target="_blank" rel="external">CSS3</a>都指出：</p>
+<blockquote>
+<p>字体族的名字要么作为字符串用引号包含起来，要么作为标识符，不需要引号。这就意味着在没有引号的名称里，开头的大多数标点符号和数字都需要被转义</p>
+</blockquote>
+<p>注意：“a sequence of one or more identifiers”暗示多个空格分隔的标识符组成了一个单一的字体族名字。因此，<code>font-family: Comic Sans MS</code>是合法的，和<code>font-family: &#39;Comic Sans MS&#39;</code>等价。前者包含三个空格分隔的标识符，后者只是一个字符串。</p>
+<p>规范里用一个新的段落来澄清：</p>
+<blockquote>
+<p>如果font family的名字是一系列标识符。那么计算机识别的最终值是单个空格分隔的标识符转换成字符串后的值。</p>
+</blockquote>
+<p>关于前面提到的CSS校验器发出的警告描述了当标识符前后有空格时会发生什么：</p>
+<blockquote>
+<p>标识符前后的空格会被忽略，内部的其他多个空格会被转成一个空格。</p>
+</blockquote>
+<p>规范也暗示了未转义的空白字符不能成为标识符的一部分，也不能是一序列标识符的开头</p>
+<h1 id="一般的字体族关键字"><a href="#一般的字体族关键字" class="headerlink" title="一般的字体族关键字"></a>一般的字体族关键字</h1><p>规范定义了如下的字体族关键字：<code>serif</code>, <code>sans-serif</code>, <code>cursive</code>, <code>fantasy</code>, 和 <code>monospace</code>.这些关键字可以作为普通的回退机制，以防期望的字体不可以用的时候。作者被鼓励在字体定义的最后面加上一种上面这些字体之一作为最后的可选项，来提高代码的鲁棒性。作为关键字，他们不需要引号。</p>
+<p>换句话说，<code>font-family: sans-serif</code>代表的是一个普通的sans-serif字体族。而<code>font-family: &#39;sans-serif&#39;</code>则代表了一个名字叫sans-serif的字体。这个区别很重要。</p>
+<h1 id="其他的关键字"><a href="#其他的关键字" class="headerlink" title="其他的关键字"></a>其他的关键字</h1><p>还有其他的一些关键字：</p>
+<blockquote>
+<p>当字体族的名字和关键字的值一样时（<code>inherit</code>, <code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>fantasy</code>, 和 <code>cursive</code>），需要加引号以防和关键字混淆。<code>initial</code>和<code>default</code>作为保留字以备将来的使用，如果作为字体名的时候需要用引号括起来。浏览器不需要考虑<code>&lt;family-name&gt;</code>这种情况</p>
+</blockquote>
+<p>注意：所有的关键字都是<a href="https://www.w3.org/TR/CSS21/syndata.html#characters" target="_blank" rel="external">大小写不敏感的</a>。举个栗子：<code>Monospace</code>和<code>monospace</code>，<code>mOnOsPaCe</code>都代表同一个关键字。如果你想用和关键字一样名字的字体时，需要加引号</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>目前为止，在约定的合法的标识符了唯一不允许的字符是<a href="https://codepoints.net/U+0020" target="_blank" rel="external">U+0020 space characters</a>，所有的空格分隔非关键字的部分都是合格的标识符，标识符可以作为一个没有引号的字体族名字。</p>
+<p>如果一个字体族的名字和关键字一样，那么需要加引号、</p>
+<p>如果你想用非法的css标识符作为字体族的名字或者其中的一部分，那么你需要用字符串的形式代替，或者<a href="https://mathiasbynens.be/notes/css-escapes" target="_blank" rel="external">转义</a>剩下的没有引号的标识符。</p>
+<p>一些例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/* 非法的，因为标识符里没有/ */</div><div class="line">font-family: Red/Black;</div><div class="line">/* 合法的 — `/`被转义了 */</div><div class="line">font-family: Red\/Black;</div><div class="line">/* 非法的，字符串和标识符不能混用: */</div><div class="line">font-family: &apos;Lucida&apos; Grande;</div><div class="line">/* 合法的 — it’s a single string: */</div><div class="line">font-family: &apos;Lucida Grande&apos;;</div><div class="line">/* 合法的 — 空格分隔的标识符序列: */</div><div class="line">font-family: Lucida Grande;</div><div class="line">/* 合法的 — 空格分隔的两个标识符: */</div><div class="line">font-family: Lucida     Grande;</div><div class="line">/* 非法的 标识符里不允许出现`!`*/</div><div class="line">font-family: Ahem!;</div><div class="line">/* 合法的 — 字符串: */</div><div class="line">font-family: &apos;Ahem!&apos;;</div><div class="line">/* 合法的 — `!`转义了: */</div><div class="line">font-family: Ahem\!;</div><div class="line">/* 非法的 标识符不能以数字开头: */</div><div class="line">font-family: Hawaii 5-0;</div><div class="line">/* 合法的 — 字符串: */</div><div class="line">font-family: &apos;Hawaii 5-0&apos;;</div><div class="line">/* 合法的 — `\35 `是 `5`的转义: */</div><div class="line">font-family: Hawaii \35 -0;</div><div class="line">/* 合法的 — `\ ` 是空格的转义 ` `: */</div><div class="line">font-family: Hawaii\ 5-0;</div><div class="line">/* 合法的 — `$` : */</div><div class="line">font-family: $42;</div><div class="line">/* 合法的 —  `$` 转义了: */</div><div class="line">font-family: \$42;</div><div class="line">/* 合法的 — `€` 允许出现在标识符里: */</div><div class="line">font-family: €42;</div></pre></td></tr></table></figure>
+<h1 id="字体族名字合法性检查器"><a href="#字体族名字合法性检查器" class="headerlink" title="字体族名字合法性检查器"></a>字体族名字合法性检查器</h1><p>我做了一个<a href="https://mothereff.in/font-family" target="_blank" rel="external">工具</a>来检查一个给定的字符串需不需加引号。</p>
+<p><img src="http://ggbond.qiniudn.com/validator@2x.png" alt="https://mothereff.in/font-family"></p>
+<p>《完》</p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/18/深入研究Virtual-DOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入研究Virtual DOM</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="css的font-family什么时候需要引号" data-title="CSS的font family什么时候需要引号" data-url="http://www.lixuejiang.me/2017/01/02/css的font-family什么时候需要引号/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

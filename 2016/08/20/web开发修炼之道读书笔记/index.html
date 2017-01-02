@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>web开发修炼之道读书笔记 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="团队合作揭秘前端工程师1.css是基本功2.javascript，包括原生的和类库，框架3.后端语言
+欲精一行，必先通10行提高重用性冗余和精简的矛盾磨刀不误砍柴工制订规范团队合作的最大难点高质量的HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web开发修炼之道读书笔记">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/08/20/web开发修炼之道读书笔记/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="团队合作揭秘前端工程师1.css是基本功2.javascript，包括原生的和类库，框架3.后端语言
+欲精一行，必先通10行提高重用性冗余和精简的矛盾磨刀不误砍柴工制订规范团队合作的最大难点高质量的HTML">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web开发修炼之道读书笔记">
+<meta name="twitter:description" content="团队合作揭秘前端工程师1.css是基本功2.javascript，包括原生的和类库，框架3.后端语言
+欲精一行，必先通10行提高重用性冗余和精简的矛盾磨刀不误砍柴工制订规范团队合作的最大难点高质量的HTML">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-web开发修炼之道读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/web开发修炼之道读书笔记/" class="article-date">
+  	<time datetime="2016-08-20T04:48:43.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web开发修炼之道读书笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="团队合作"><a href="#团队合作" class="headerlink" title="团队合作"></a>团队合作</h2><h3 id="揭秘前端工程师"><a href="#揭秘前端工程师" class="headerlink" title="揭秘前端工程师"></a>揭秘前端工程师</h3><p>1.css是基本功<br>2.javascript，包括原生的和类库，框架<br>3.后端语言</p>
+<h3 id="欲精一行，必先通10行"><a href="#欲精一行，必先通10行" class="headerlink" title="欲精一行，必先通10行"></a>欲精一行，必先通10行</h3><h3 id="提高重用性"><a href="#提高重用性" class="headerlink" title="提高重用性"></a>提高重用性</h3><h3 id="冗余和精简的矛盾"><a href="#冗余和精简的矛盾" class="headerlink" title="冗余和精简的矛盾"></a>冗余和精简的矛盾</h3><h3 id="磨刀不误砍柴工"><a href="#磨刀不误砍柴工" class="headerlink" title="磨刀不误砍柴工"></a>磨刀不误砍柴工</h3><h3 id="制订规范"><a href="#制订规范" class="headerlink" title="制订规范"></a>制订规范</h3><h3 id="团队合作的最大难点"><a href="#团队合作的最大难点" class="headerlink" title="团队合作的最大难点"></a>团队合作的最大难点</h3><h2 id="高质量的HTML"><a href="#高质量的HTML" class="headerlink" title="高质量的HTML"></a>高质量的HTML</h2><a id="more"></a>
+<h3 id="标签的语义"><a href="#标签的语义" class="headerlink" title="标签的语义"></a>标签的语义</h3><table>
+<thead>
+<tr>
+<th>标签名</th>
+<th style="text-align:center">英文全拼</th>
+<th style="text-align:right">中文翻译</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>div</td>
+<td style="text-align:center">division</td>
+<td style="text-align:right">分割</td>
+</tr>
+<tr>
+<td>span</td>
+<td style="text-align:center">span</td>
+<td style="text-align:right">范围</td>
+</tr>
+<tr>
+<td>ol</td>
+<td style="text-align:center">ordered list</td>
+<td style="text-align:right">有序列表</td>
+</tr>
+<tr>
+<td>ul</td>
+<td style="text-align:center">unordered list</td>
+<td style="text-align:right">无序列表</td>
+</tr>
+<tr>
+<td>li</td>
+<td style="text-align:center">list item</td>
+<td style="text-align:right">列表项目</td>
+</tr>
+<tr>
+<td>dl</td>
+<td style="text-align:center">definition list</td>
+<td style="text-align:right">定义列表</td>
+</tr>
+<tr>
+<td>dt</td>
+<td style="text-align:center">definition term</td>
+<td style="text-align:right">定义术语</td>
+</tr>
+<tr>
+<td>dd</td>
+<td style="text-align:center">definition description</td>
+<td style="text-align:right">定义描述</td>
+</tr>
+<tr>
+<td>del</td>
+<td style="text-align:center">deleted</td>
+<td style="text-align:right">删除</td>
+</tr>
+<tr>
+<td>ins</td>
+<td style="text-align:center">inserted</td>
+<td style="text-align:right">插入</td>
+</tr>
+<tr>
+<td>h1~h6</td>
+<td style="text-align:center">header</td>
+<td style="text-align:right">标题</td>
+</tr>
+<tr>
+<td>p</td>
+<td style="text-align:center">paragraph</td>
+<td style="text-align:right">段落</td>
+</tr>
+<tr>
+<td>hr</td>
+<td style="text-align:center">horizonal rule</td>
+<td style="text-align:right">水平尺</td>
+</tr>
+<tr>
+<td>a</td>
+<td style="text-align:center">anchor</td>
+<td style="text-align:right">锚</td>
+</tr>
+<tr>
+<td>abbr</td>
+<td style="text-align:center">abbreviation</td>
+<td style="text-align:right">缩写词</td>
+</tr>
+<tr>
+<td>acronym</td>
+<td style="text-align:center">acronym</td>
+<td style="text-align:right">取首字母的缩写词</td>
+</tr>
+<tr>
+<td>address</td>
+<td style="text-align:center">address</td>
+<td style="text-align:right">地址</td>
+</tr>
+<tr>
+<td>var</td>
+<td style="text-align:center">variable</td>
+<td style="text-align:right">变量</td>
+</tr>
+<tr>
+<td>pre</td>
+<td style="text-align:center">preformatted</td>
+<td style="text-align:right">预定义格式</td>
+</tr>
+<tr>
+<td>blockquote</td>
+<td style="text-align:center">block quoting</td>
+<td style="text-align:right">区块引用语</td>
+</tr>
+<tr>
+<td>strong</td>
+<td style="text-align:center">strong</td>
+<td style="text-align:right">加重</td>
+</tr>
+<tr>
+<td>em</td>
+<td style="text-align:center">emphasized</td>
+<td style="text-align:right">加重</td>
+</tr>
+<tr>
+<td>b</td>
+<td style="text-align:center">bold</td>
+<td style="text-align:right">粗体</td>
+</tr>
+<tr>
+<td>i</td>
+<td style="text-align:center">italic</td>
+<td style="text-align:right">斜体</td>
+</tr>
+<tr>
+<td>big</td>
+<td style="text-align:center">big</td>
+<td style="text-align:right">变大</td>
+</tr>
+<tr>
+<td>small</td>
+<td style="text-align:center">small</td>
+<td style="text-align:right">变小</td>
+</tr>
+<tr>
+<td>sup</td>
+<td style="text-align:center">superscripted</td>
+<td style="text-align:right">上标</td>
+</tr>
+<tr>
+<td>br</td>
+<td style="text-align:center">break</td>
+<td style="text-align:right">换行</td>
+</tr>
+<tr>
+<td>center</td>
+<td style="text-align:center">center</td>
+<td style="text-align:right">居中</td>
+</tr>
+<tr>
+<td>font</td>
+<td style="text-align:center">font</td>
+<td style="text-align:right">字体</td>
+</tr>
+<tr>
+<td>u</td>
+<td style="text-align:center">underlined</td>
+<td style="text-align:right">下划线</td>
+</tr>
+<tr>
+<td>s</td>
+<td style="text-align:center">strikethrough</td>
+<td style="text-align:right">删除线</td>
+</tr>
+<tr>
+<td>fieldset</td>
+<td style="text-align:center">filedset</td>
+<td style="text-align:right">域集</td>
+</tr>
+<tr>
+<td>legend</td>
+<td style="text-align:center">legend</td>
+<td style="text-align:right">图标</td>
+</tr>
+<tr>
+<td>caption</td>
+<td style="text-align:center">caption</td>
+<td style="text-align:right">标题</td>
+</tr>
+</tbody>
+</table>
+<p><strong>div 和span的设计目的是啥</strong>todo</p>
+<h3 id="为什么要使用语义化标签"><a href="#为什么要使用语义化标签" class="headerlink" title="为什么要使用语义化标签"></a>为什么要使用语义化标签</h3><p>对搜索引擎友好。<br>先确定html，确定语义的标签，再来选用合适的css</p>
+<h3 id="如何确定你的语义化标签是否语义良好"><a href="#如何确定你的语义化标签是否语义良好" class="headerlink" title="如何确定你的语义化标签是否语义良好"></a>如何确定你的语义化标签是否语义良好</h3><p>去掉样式，看网页结构是否组织良好有序，是否仍然有很好的可读性</p>
+<h3 id="常见模块你真的很了解吗"><a href="#常见模块你真的很了解吗" class="headerlink" title="常见模块你真的很了解吗"></a>常见模块你真的很了解吗</h3><p>需要注意几点：</p>
+<ul>
+<li>尽可能少的使用无语义标签div和span</li>
+<li>在语义不明显，既可以用p也可以用div的地方，尽量用p，因为p默认情况下有上下间距，去样式后的可读性更好，对兼容特殊终端有利</li>
+<li>不要使用纯样式标签，例如b、font和u等，改用css设置。语义上需要强调的文本可以包在strong或者em标签里，strong和em有强调的寓意，其中strong的默认样式是<strong>加粗</strong>，em的样式<em>斜体</em></li>
+</ul>
+<h2 id="高质量的css"><a href="#高质量的css" class="headerlink" title="高质量的css"></a>高质量的css</h2><h3 id="怪异模式和DTD"><a href="#怪异模式和DTD" class="headerlink" title="怪异模式和DTD"></a>怪异模式和DTD</h3><p>标准模式：浏览器根据规范表现页面,元素的宽度由<code>padding+border+width</code><br>怪异模式：模拟老师浏览器的行为以防止老站点无法工作。<code>width=padding+border</code><br>4种DTD<br>1.<code>html 4.01 strict</code><br>2.<code>html 4.01 loose</code><br>3.<code>xhtml 1.0 xhtml11-transitional</code><br>4.<code>xhtml 1.0 xhtml11-strict</code><br>如果漏写DTD声明，firefox和chrome仍然会按照标准模式来解析网页，但在IE中(包括IE6,7,8)就会触发怪异模式</p>
+<h3 id="如何组织css"><a href="#如何组织css" class="headerlink" title="如何组织css"></a>如何组织css</h3><p>应用css的能力应该分成两部分：<br>1.CSS的API，重点是如何用css控制页面内元素的样式<br>2.CSS框架，重点是如何对css进行组织</p>
+<h3 id="推荐的base-css"><a href="#推荐的base-css" class="headerlink" title="推荐的base.css"></a>推荐的base.css</h3><p>一般网站的css分为三层<br>1.base，如css reset<br>2.common，模块化<br>3.pages<br>需要特别注意几点：</p>
+<ul>
+<li><code>.fl{float：left;display：inline}</code>和<code>.fr{float：right;display：inline}</code>。除了设置float之外，还设置了<code>display：inline</code>.其作用是解决IE6双外边距bug。在IE6下，如果设置了元素浮动，同时又设置了margin-left或者margin-right，margin值会加倍。解决办法是设置display：inline。</li>
+<li>元素居中时，需要指定宽度</li>
+<li>让浮动元素的父容器能够根据浮动元素的高度而自适应高度，有三种做法：<blockquote>
+<p>1.让父元素同时浮动，这种方法会让父元素也浮动起来<br>2.浮动元素后紧跟一个用于清除浮动的空标签，这种方法会增加一个空标签，破坏了语义化。<br>3.给父容器挂一个特殊的class，直接从父容器清除元素的浮动，例如<code>&lt;div&gt; class=&quot;clearfix&quot;&gt;&lt;div class=&quot;fl&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></p>
+</blockquote>
+</li>
+</ul>
+<p>*<code>.zoom{zoom:1}</code>触发IE6的<code>hasLayout</code></p>
+<h3 id="模块化css"><a href="#模块化css" class="headerlink" title="模块化css"></a>模块化css</h3><ul>
+<li>如何划分模块—单一职责<blockquote>
+<p>模块与模块之间尽量不要包含相同的部分，如果有相同的部分，应该将他们提取出来，拆分成一个独立的模块。<br>模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性。</p>
+</blockquote>
+</li>
+<li>命名空间<blockquote>
+<p>不要滥用子选择符</p>
+</blockquote>
+</li>
+<li>多用组合，少用继承。方便扩展</li>
+<li>处理上下<code>margin</code></li>
+</ul>
+<h3 id="低权重原则"><a href="#低权重原则" class="headerlink" title="低权重原则"></a>低权重原则</h3><ul>
+<li><p>当不同的选择符的样式设置有冲突时，会采用权重高的选择符设置的样式</p>
+<blockquote>
+<p>元素和伪元素选择器的权重：1<br>class的权重：10<br>id的权重：100<br>行内样式的权重最高：1000</p>
+</blockquote>
+</li>
+<li><p>如果选择符权重相同，那么样式会遵循就近原则，选择最后<strong>定义</strong>的选择符</p>
+</li>
+<li>为了保证样式容易被覆盖，提供可维护性，CSS选择符需保证权重尽可能低<h3 id="css-sprite"><a href="#css-sprite" class="headerlink" title="css sprite"></a>css sprite</h3></li>
+<li>它只能合并用于背景的图片，对于<code>&lt;img src=&quot;&quot;/&gt;</code>设置的图片，不能合并到<code>css sprite</code>里面</li>
+<li>对于横向和纵向都平铺的图片，也不能使用css sprite。</li>
+</ul>
+<blockquote>
+<p>使用css sprite技术时，需要考虑付出的代价</p>
+</blockquote>
+<h3 id="css的常见问题"><a href="#css的常见问题" class="headerlink" title="css的常见问题"></a>css的常见问题</h3><h4 id="IE条件注释"><a href="#IE条件注释" class="headerlink" title="IE条件注释"></a>IE条件注释</h4><ul>
+<li><p>只在IE下生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if IE]&gt;</div><div class="line">&lt;link type=&quot;text/css&quot; href=&quot;test.css&quot; rel=&quot;stylesheet&quot;/&gt;</div><div class="line">&lt;![endif] --&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在IE的特定版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if IE 6]&gt;</div><div class="line">&lt;link type=&quot;text/css&quot; href=&quot;test.css&quot; rel=&quot;stylesheet&quot;/&gt;</div><div class="line">&lt;![endif] --&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>大于等于某个版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if gt IE 6]&gt;</div><div class="line">&lt;link type=&quot;text/css&quot; href=&quot;test.css&quot; rel=&quot;stylesheet&quot;/&gt;</div><div class="line">&lt;![endif] --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>lte:小于等于<br>lt：小于<br>gte：大于等于<br>gt：大于</p>
+<ul>
+<li>在某个版本不生效<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if ！ IE 6]&gt;</div><div class="line">&lt;link type=&quot;text/css&quot; href=&quot;test.css&quot; rel=&quot;stylesheet&quot;/&gt;</div><div class="line">&lt;![endif] --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="选择符前缀"><a href="#选择符前缀" class="headerlink" title="选择符前缀"></a>选择符前缀</h4><ul>
+<li><code>*html</code>只针对IE6</li>
+<li><code>+html</code>只针对IE7<blockquote>
+<p>向后兼容性存在问题<br>不能用于内联样式</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="样式属性前缀"><a href="#样式属性前缀" class="headerlink" title="样式属性前缀"></a>样式属性前缀</h4><ul>
+<li><code>*</code>在IE6和IE7下生效</li>
+<li><code>_</code>只针对IE6<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    .test&#123;width: 80px;*width: 70px;_width:60px;&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>向后兼容性存在问题<br>可以用于内联样式</p>
+</blockquote>
+<h4 id="触发hasLayout"><a href="#触发hasLayout" class="headerlink" title="触发hasLayout"></a>触发hasLayout</h4><ul>
+<li><code>zoom：1</code></li>
+<li><code>position:relative</code></li>
+</ul>
+<h3 id="块级元素和行内元素"><a href="#块级元素和行内元素" class="headerlink" title="块级元素和行内元素"></a>块级元素和行内元素</h3><ul>
+<li><p>块级元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">div -最常用的块级元素</div><div class="line">dl - 和dt dd搭配使用的块级元素</div><div class="line">form - 交互表单</div><div class="line">h1 - 大标题</div><div class="line">hr - 水平分隔线</div><div class="line">ol - 排序表单</div><div class="line">p - 段落</div><div class="line">ul - 非排序列表</div></pre></td></tr></table></figure>
+</li>
+<li><p>内联元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">a - 锚点</div><div class="line">b - 粗体(不推荐)</div><div class="line">br - 换行</div><div class="line">em - 强调</div><div class="line">font - 字体设定(不推荐)</div><div class="line">i - 斜体</div><div class="line">img - 图片</div><div class="line">input - 输入框</div><div class="line">label - 表格标签</div><div class="line">select - 项目选择</div><div class="line">small - 小字体文本</div><div class="line">span - 常用内联容器，定义文本内区块</div><div class="line">strike - 中划线</div><div class="line">strong - 粗体强调</div><div class="line">sub - 下标</div><div class="line">sup - 上标</div><div class="line">textarea - 多行文本输入框</div><div class="line">tt - 电传文本</div><div class="line">u - 下划线</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>块级元素和行内元素的区别：</p>
+<ul>
+<li>块级元素独占一行，其宽度自动填满其父元素高度</li>
+<li>相邻的行内元素会排列在同一行，直到一行排不下，才会换行，其宽度随元素的内容变化</li>
+<li>块级元素可以设置width、height属性，行内元素设置无效</li>
+</ul>
+<blockquote>
+<p>display:inline-block:可以设置长宽，可以设置margin和padding值，但是不独占一行，宽度不占满父元素。</p>
+</blockquote>
+<h3 id="relative、absolute和float"><a href="#relative、absolute和float" class="headerlink" title="relative、absolute和float"></a>relative、absolute和float</h3><ul>
+<li>设置position:relative或position:absolute都可以让元素激活left、top、right、bottom和z-index属性（默认情况下这些属性未激活，设置了也无效）</li>
+<li>position:relative不会脱离文档流</li>
+<li>position:absolute完全脱离了文档流，不再在z-index:0保留占位符，其left、top、right、bottom值是相对于自己最近的一个设置了position:relative或position:absolute的祖先元素，如果祖先元素都没设置这两个属性，那么就相对于body元素</li>
+<li>float控制元素在同层里坐浮动或者右浮，float会改变正常的文档流排列，影响到周围元素</li>
+<li>position:absolute和float会隐身的改变display属性为display:inline-block。</li>
+</ul>
+<h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>1.行内元素水平居中</p>
+<blockquote>
+<p>给父元素设置text-align:center</p>
+</blockquote>
+<p>2.确定宽度的块级元素的水平居中</p>
+<blockquote>
+<p>margin:0 auto;</p>
+</blockquote>
+<p>3.不确定宽度的块级元素的居中<br>三种方法</p>
+<ul>
+<li><p>用table实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;水平居中1&lt;/title&gt;</div><div class="line">	&lt;style text=&quot;text/css&quot;&gt;</div><div class="line">	ul&#123;list-style: none;margin: 0;padding: 0;&#125;</div><div class="line">	table&#123;margin-left: auto;margin-right: auto;&#125;</div><div class="line">	.warp&#123;background: #000;width: 500px;height: 100px;&#125;</div><div class="line">	.test li&#123;float: left;display: inline;margin-right: 5px;&#125;</div><div class="line">	.test a&#123;float: left;width: 20px;height: 20px;text-align: center;line-height: 20px;background: #316ac5;color: #fff;border: 1px solid #316ac5;text-decoration: none;&#125;</div><div class="line">	.test a:hover&#123;background: #fff;color: #316ac5;&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">		&lt;table&gt;</div><div class="line">			&lt;tbody&gt;</div><div class="line">				&lt;tr&gt;</div><div class="line">					&lt;td&gt;</div><div class="line">						&lt;ul class=&quot;test&quot;&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">						&lt;/ul&gt;</div><div class="line">					&lt;/td&gt;</div><div class="line">				&lt;/tr&gt;</div><div class="line">			&lt;/tbody&gt;</div><div class="line">		&lt;/table&gt;</div><div class="line">		&lt;table&gt;</div><div class="line">			&lt;tbody&gt;</div><div class="line">				&lt;tr&gt;</div><div class="line">					&lt;td&gt;</div><div class="line">						&lt;ul class=&quot;test&quot;&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;</div><div class="line">						&lt;/ul&gt;</div><div class="line">					&lt;/td&gt;</div><div class="line">				&lt;/tr&gt;</div><div class="line">			&lt;/tbody&gt;</div><div class="line">		&lt;/table&gt;</div><div class="line">		&lt;table&gt;</div><div class="line">			&lt;tbody&gt;</div><div class="line">				&lt;tr&gt;</div><div class="line">					&lt;td&gt;</div><div class="line">						&lt;ul class=&quot;test&quot;&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;</div><div class="line">							&lt;li&gt;&lt;a href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;</div><div class="line">						&lt;/ul&gt;</div><div class="line">					&lt;/td&gt;</div><div class="line">				&lt;/tr&gt;</div><div class="line">			&lt;/tbody&gt;</div><div class="line">		&lt;/table&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置块级元素的display为inline，然后使用text-align:center来实现居中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">		&lt;title&gt;水平居中1&lt;/title&gt;</div><div class="line">		&lt;style text=&quot;text/css&quot;&gt;</div><div class="line">		ul&#123;list-style: none;margin: 0;padding: 0;&#125;</div><div class="line">		.warp&#123;background: #000;width: 500px;height: 100px;&#125;</div><div class="line">		.test&#123;text-align: center;padding: 5px;&#125;</div><div class="line">		.test li&#123;display: inline-block;&#125;</div><div class="line">		.test a&#123;float: left;width: 20px;height: 20px;text-align: center;line-height: 20px;background: #316ac5;color: #fff;border: 1px solid #316ac5;text-decoration: none;&#125;</div><div class="line">		.test a:hover&#123;background: #fff;color: #316ac5;&#125;</div><div class="line">		&lt;/style&gt;</div><div class="line">	&lt;/head&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div class=&quot;wrap&quot;&gt;</div><div class="line">			&lt;ul class=&quot;test&quot;&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;/ul&gt;</div><div class="line">			&lt;ul class=&quot;test&quot;&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;/ul&gt;</div><div class="line">			&lt;ul class=&quot;test&quot;&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;/ul&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>父元素设置float，position：relative和left：50%，子元素设置position：relative和left：-50%</p>
+</li>
+</ul>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>1.父元素高度不确定的文本、图片、块级元素的垂直居中<br>通过给父元素设置相同的上下边距实现</p>
+<p>2.父元素高度确定的单行文件的垂直居中<br>给父元素设置line-height来实现，line-hight值和父元素的高度值相同</p>
+<p>3.父元素高度确定的文本、图片、块级元素的垂直居中<br>采用vertical-align+display:table-cell实现</p>
+<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p>利用组合类</p>
+<h2 id="高质量的javascript"><a href="#高质量的javascript" class="headerlink" title="高质量的javascript"></a>高质量的javascript</h2><h3 id="养成良好的编程习惯"><a href="#养成良好的编程习惯" class="headerlink" title="养成良好的编程习惯"></a>养成良好的编程习惯</h3><h4 id="避免javascript冲突"><a href="#避免javascript冲突" class="headerlink" title="避免javascript冲突"></a>避免javascript冲突</h4><ul>
+<li>用匿名函数将脚本包起来，可以有效的控制全局变量，避免冲突隐患</li>
+<li>命名空间<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">		var GLOBAL=&#123;&#125;;</div><div class="line">		GLOBAL.namespace=function(str)&#123;</div><div class="line">			var arr=str.split(&quot;.&quot;),o=GLOBAL;</div><div class="line">			for (var i = (arr[0]==&quot;GLOBAL&quot;?1:0); i arr.length; i++) &#123;</div><div class="line">				o[arr[i]]=o[arr[i]]||&#123;&#125;;</div><div class="line">				o=o[arr[i]];</div><div class="line">			&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="给程序提供统一的入口"><a href="#给程序提供统一的入口" class="headerlink" title="给程序提供统一的入口"></a>给程序提供统一的入口</h4><ul>
+<li>window.load</li>
+<li>DOMReady函数，<code>$(document).ready()</code></li>
+</ul>
+<h4 id="引入编译的概念"><a href="#引入编译的概念" class="headerlink" title="引入编译的概念"></a>引入编译的概念</h4><p>文件压缩</p>
+<blockquote>
+<p>目前很多前端的解决方案都引入了编译的概念，包括javascript和css，例如fis，angularjs等等，需要深入学习todo</p>
+</blockquote>
+<h3 id="分层和库"><a href="#分层和库" class="headerlink" title="分层和库"></a>分层和库</h3><h4 id="层"><a href="#层" class="headerlink" title="层"></a>层</h4><p>一般分为base，common，page层<br>典型的javascript兼容问题<br>1.透明度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function setOpacity(node,level)&#123;</div><div class="line">			node=typeof node==&quot;string&quot; ?document.getElementById(node):node;</div><div class="line">			if (document.all) &#123;</div><div class="line">				node.style.filter=&apos;alpha(opacity=&apos;+level+&apos;)&apos;;</div><div class="line">			&#125;else&#123;</div><div class="line">				node.style.opacity=level/100;</div><div class="line">			&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.event对象<br>在IE下event对象是作为全局变量挂在window下面的，而其他浏览器会把event对象作为事件处理函数的参数传进去<br>3.冒泡<br>cancleBubble和stopPropaion<br>4.注册事件处理函数</p>
+<ul>
+<li>onxxx，不能叠加，会覆盖</li>
+<li>attachEvent(IE)和addEventListener</li>
+</ul>
+<h4 id="库"><a href="#库" class="headerlink" title="库"></a>库</h4><p>jquery，yui等等<br><a href="http://www.ibm.com/developerworks/cn/web/1404_wangfx_jsframeworks/" target="_blank" rel="external">框架比较</a></p>
+<blockquote>
+<p>预留回调接口</p>
+</blockquote>
+<h4 id="改变DOM样式的三种方式"><a href="#改变DOM样式的三种方式" class="headerlink" title="改变DOM样式的三种方式"></a>改变DOM样式的三种方式</h4><ul>
+<li>设置DOMNODE的style属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;span id=&quot;test&quot;&gt;hello world&lt;/span&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var node=document.getElementById(&quot;test&quot;);</div><div class="line">	node.style.color=&quot;red&quot;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>css属性和javascript变量之间的对应关系</p>
+</blockquote>
+<ul>
+<li>设置classname</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">	.testStyle&#123;color:red;background-color:black;</div><div class="line">		font-size: 40px;font-weight: bold;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;span id=&quot;test&quot;&gt;hello world&lt;/span&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var node=document.getElementById(&quot;test&quot;);</div><div class="line">	node.className=&quot;testStyle&quot;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>动态添加<code>&lt;style&gt;</code>标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	function addStyleNode(str)&#123;</div><div class="line">		var styleNode=document.createElement(&quot;style&quot;);</div><div class="line">		styleNode.type=&quot;text/css&quot;;</div><div class="line">		if (styleNode.styleSheet) &#123;</div><div class="line">			styleNode.styleSheet.cssText=str;</div><div class="line">		&#125;else&#123;</div><div class="line">			styleNode.innerHTML=str;</div><div class="line">		&#125;</div><div class="line">		document.getElementsByTagName(&quot;head&quot;)[0].appendChild(styleNode);</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/25/Full-Stack-Redux-Tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Full-Stack Redux Tutorial
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/20/CSS权威指南读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS权威指南读书笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="web开发修炼之道读书笔记" data-title="web开发修炼之道读书笔记" data-url="http://www.lixuejiang.me/2016/08/20/web开发修炼之道读书笔记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

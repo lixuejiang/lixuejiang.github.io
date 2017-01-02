@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>7种方式实现web下划线 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文来自css-tricks，介绍了在不同的场景下实现下划线的7种方式。
+简介有许多种不同的方式来实现下划线，你也许还记得Crafting link underlines on Medium这篇文章。Medium也不是想做什么疯狂的事情，他们只是想让他们的文字下面好看一点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7种方式实现web下划线">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/11/27/7种方式实现web下划线/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="本文来自css-tricks，介绍了在不同的场景下实现下划线的7种方式。
+简介有许多种不同的方式来实现下划线，你也许还记得Crafting link underlines on Medium这篇文章。Medium也不是想做什么疯狂的事情，他们只是想让他们的文字下面好看一点。">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2010:46:33.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2013:27:08.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2013:47:03.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2013:47:57.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2013:49:05.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2016-11-27%2013:55:21.png">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7种方式实现web下划线">
+<meta name="twitter:description" content="本文来自css-tricks，介绍了在不同的场景下实现下划线的7种方式。
+简介有许多种不同的方式来实现下划线，你也许还记得Crafting link underlines on Medium这篇文章。Medium也不是想做什么疯狂的事情，他们只是想让他们的文字下面好看一点。">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/2016-11-27%2010:46:33.png">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-7种方式实现web下划线" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/27/7种方式实现web下划线/" class="article-date">
+  	<time datetime="2016-11-27T02:38:05.000Z" itemprop="datePublished">2016-11-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      7种方式实现web下划线
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文来自<a href="https://css-tricks.com/styling-underlines-web/" target="_blank" rel="external">css-tricks</a>，介绍了在不同的场景下实现下划线的7种方式。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>有许多种不同的方式来实现下划线，你也许还记得<a href="https://medium.com/design/7c03a9274f9" target="_blank" rel="external">Crafting link underlines on Medium</a>这篇文章。Medium也不是想做什么疯狂的<a href="http://tympanus.net/Development/InlineAnchorStyles/" target="_blank" rel="external">事情</a>，他们只是想让他们的文字下面好看一点。</p>
+<a id="more"></a>
+<p><img src="http://ggbond.qiniudn.com/2016-11-27%2010:46:33.png" alt="http://ggbond.qiniudn.com/2016-11-27%2010:46:33.png"><br>这是一条基本的下划线，它大小合适。绝对比浏览器的默认样式好看的多。所以，看上去Medium为了实现这个效果也经历了许多困难。两年后，实现一个好看的下划线依然一样困难</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>为什么不能直接用<code>text-decoration: underline</code>呢？如果我们谈论的是理想场景，underline需要满足下面这些场景：</p>
+<ul>
+<li>在基线下面定位</li>
+<li>跳过<a href="https://en.wikipedia.org/wiki/Descender" target="_blank" rel="external">descenders</a></li>
+<li>改变颜色，厚度（thickness）和样式</li>
+<li>重复包裹文字</li>
+<li>在任何背景下都生效</li>
+</ul>
+<p>我认为这些需求都是很合理的，但是到目前为止，没有一种直观的方式用css来实现上面的所有目标</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>因此，能实现下划线的方法都有哪些？</p>
+<ul>
+<li><code>text-decoration</code></li>
+<li><code>border-bottom</code></li>
+<li><code>box-shadow</code></li>
+<li><code>background-image</code></li>
+<li><code>SVG filters</code></li>
+<li><code>Underline.js (canvas)</code></li>
+<li><code>text-decoration-*</code></li>
+</ul>
+<p>让我们来一个个的讨论这些方法的好处和坏处</p>
+<h2 id="text-decoration"><a href="#text-decoration" class="headerlink" title="text-decoration"></a>text-decoration</h2><p><code>text-decoration</code>是最直接的实现方式，只用一个属性就能实现给文字添加下划线。当字体比较小的时候，看上去没什么问题，但是当字体变大的时候，看上去就有点笨拙了。</p>
+<iframe id="cp_embed_aByLLO" src="//codepen.io/lixuejiang/embed/aByLLO?height=300&theme-id=0&slug-hash=aByLLO&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p><code>text-decoration</code>最大的问题是缺少定制化，它直接使用文字的颜色和字体，不能跨浏览器修改样式，更多内容后面会介绍</p>
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>使用方便</li>
+<li>定位在基线下面</li>
+<li>在Safari和iOS里跳过了descenders</li>
+<li>多行也没问题</li>
+<li>所有的背景也ok</li>
+</ul>
+<h3 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h3><ul>
+<li>在其他浏览器里不能跳过descenders</li>
+<li>不能修改颜色，厚度和样式</li>
+</ul>
+<h2 id="border-bottom"><a href="#border-bottom" class="headerlink" title="border-bottom"></a>border-bottom</h2><p><code>border-bottom</code>在快速和定制化之间提供了一个很好的平衡。这个方法用了css边框，你可以修改颜色，厚度和样式。<br><code>inline</code>元素的<code>border-bottom</code>长这样</p>
+<iframe id="cp_embed_XNaeVW" src="//codepen.io/lixuejiang/embed/XNaeVW?height=300&theme-id=0&slug-hash=XNaeVW&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>最大的问题是下划线离文本有多远–下划线就在descenders下面。你可以通过让元素变成<code>inline-block</code>然后减少<code>line-height</code>来改变这个距离。但是你就失去了包裹文本的能力。单行元素没问题，其他情况就不行了。</p>
+<iframe id="cp_embed_xRLXYZ" src="//codepen.io/lixuejiang/embed/xRLXYZ?height=300&theme-id=0&slug-hash=xRLXYZ&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>另外，你可以用<code>text-shadow</code>来盖住descenders附近的部分，但是你需要用和背景色一样的颜色。这一位置他只能在固定颜色的背景上生效，渐变的背景和背景图没用。</p>
+<h3 id="好处-1"><a href="#好处-1" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>用<code>text-shadow</code>可以跳过descenders</li>
+<li>可以改变颜色，厚度和样式</li>
+<li>可以对颜色和厚度实施渐变和动画</li>
+<li><code>inline-block</code>自动包裹</li>
+<li>用<code>text-shadow</code>可以支持任意背景</li>
+</ul>
+<h3 id="坏处-1"><a href="#坏处-1" class="headerlink" title="坏处"></a>坏处</h3><ul>
+<li>定位很远，而且很难重定位</li>
+<li>需要使用一系列不相干的属性</li>
+<li>Janky text selection when using text-shadow ？？</li>
+</ul>
+<h2 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h2><p><code>box-shadow</code>需要两个<code>inset box shadows</code>来实现下划线：其中一个创建一个矩形，另外一个盖在上面。这种方法要能生效的前提是使用固定颜色的背景</p>
+<iframe id="cp_embed_eBEeOp" src="//codepen.io/lixuejiang/embed/eBEeOp?height=300&theme-id=0&slug-hash=eBEeOp&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>你也可以用<code>text-shadow</code>来模拟文字的descenders和underline之间的空白。但是如果下划线和文字的颜色不一样的时候，或者空白最够薄的时候，他就不能像<code>text-decoration</code>一样很好的工作了。</p>
+<h3 id="好处-2"><a href="#好处-2" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>可以定位在基线下面</li>
+<li>用<code>text-shadow</code>可以跳过descenders</li>
+<li>可以改变颜色，厚度</li>
+<li>多行也能生效</li>
+</ul>
+<h3 id="坏处-2"><a href="#坏处-2" class="headerlink" title="坏处"></a>坏处</h3><ul>
+<li>不能修改样式</li>
+<li>不能在渐变和背景图的情况下生效</li>
+</ul>
+<h2 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h2><p><code>background-image</code>是最接近我们想要的而且问题最少的实现方式。想法是用线性渐变和<code>background-position</code>来创建一个在水平方向重复的背景图。然后设置元素<code>display: inline</code></p>
+<iframe id="cp_embed_LbjOEj" src="//codepen.io/lixuejiang/embed/LbjOEj?height=300&theme-id=0&slug-hash=LbjOEj&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>下面这个方法没有用线性渐变，而是用的背景图，你可以用你自己的图片来实现一些很酷的效果：<br><iframe id="cp_embed_RoZjNy" src="//codepen.io/lixuejiang/embed/RoZjNy?height=300&theme-id=0&slug-hash=RoZjNy&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe></p>
+<h3 id="好处-3"><a href="#好处-3" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>可以定位在基线下面</li>
+<li>用<code>text-shadow</code>可以跳过descenders</li>
+<li>可以改变颜色，厚度（允许0.5像素）和样式</li>
+<li>可以使用自定义图片</li>
+<li>多行也能生效</li>
+<li>用<code>text-shadow</code>可以支持任意背景</li>
+</ul>
+<h3 id="坏处-3"><a href="#坏处-3" class="headerlink" title="坏处"></a>坏处</h3><ul>
+<li>在不同的分辨率，不同的浏览器和不同的缩放情况下，图片的尺寸不一样</li>
+</ul>
+<h2 id="SVG-filters"><a href="#SVG-filters" class="headerlink" title="SVG filters"></a>SVG filters</h2><p>这种方法我一直在研究。你可以创建一个画了一条线的SVG filter行内元素，把他该在文本上面。然后给这个元素设置一个ID，之后就可以在css里引用这个元素：<code>url(‘#svg-underline’)</code><br>其中一个优势就是在不依赖<code>text-shadow</code>的情况下支持透明。这也就意味着在任何背景上都可以跳过descenders，包括渐变和背景图。但是他只支持单行的文本</p>
+<iframe id="cp_embed_bBrYEJ" src="//codepen.io/lixuejiang/embed/bBrYEJ?height=300&theme-id=0&slug-hash=bBrYEJ&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>在 Chrome 和 Firefox里看起来像这样：<br><img src="http://ggbond.qiniudn.com/2016-11-27%2013:27:08.png" alt="http://ggbond.qiniudn.com/2016-11-27%2013:27:08.png"><br>IE, Edge, 和 Safari的浏览器支持有问题，很难在css里测试浏览器对SVG filter的支持。可以用<code>@supports</code>属性。但是这只能测试引用是否生效。而不是filter自己。这个方法不支持跨浏览器。</p>
+<h3 id="好处-4"><a href="#好处-4" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>可以定位在基线下面</li>
+<li>跳过descenders</li>
+<li>可以改变颜色，厚度和样式</li>
+<li>支持任意背景</li>
+</ul>
+<h3 id="坏处-4"><a href="#坏处-4" class="headerlink" title="坏处"></a>坏处</h3><ul>
+<li>不支持多行</li>
+<li>在 IE, Edge, 或者 Safari里不生效，在这几个浏览器里可以用<code>text-decoration</code></li>
+</ul>
+<h2 id="Underline-js-Canvas"><a href="#Underline-js-Canvas" class="headerlink" title="Underline.js (Canvas)"></a>Underline.js (Canvas)</h2><p>Underline.js很屌，如果你还没看过他的<a href="http://underlinejs.org/" target="_blank" rel="external">tech demo</a>,赶紧停下来，去看一看。有一个很酷炫的时长9分钟的介绍它是如何工作的视频。在这里我会简短的介绍一下：它用<code>&lt;canvas&gt;</code>标签来画下划线。这是一种很新颖的方法，而且能效果出奇的好。</p>
+<p>尽管有名气。Underline.js只是个demo。你不能在不修改他们的代码的情况下直接在你的项目里引用它。<br>在这里把它作为一种实现方式来讨论还是很值得的。<code>&lt;canvas&gt;</code>可以实现漂亮的可交互的下划线。但是你必须得写一些JavaScript代码。</p>
+<h2 id="text-decoration-属性"><a href="#text-decoration-属性" class="headerlink" title="text-decoration-* 属性"></a>text-decoration-* 属性</h2><p>还记得<code>text-decoration</code>里提到的后面会详细介绍吗？<br><code>text-decoration</code>自身也能很好的工作，你也可以添加一些实验性的属性来定义样式：</p>
+<p>Remember the “more on that later” part? Well, here we are.</p>
+<ul>
+<li>text-decoration-color</li>
+<li>text-decoration-skip</li>
+<li>text-decoration-style</li>
+</ul>
+<p>也不要太激动。需要考虑浏览器兼容性</p>
+<h3 id="TEXT-DECORATION-COLOR"><a href="#TEXT-DECORATION-COLOR" class="headerlink" title="TEXT-DECORATION-COLOR"></a>TEXT-DECORATION-COLOR</h3><p><code>text-decoration-color</code>允许你改变下划线的颜色，可以和文字颜色不一样。它的跨浏览器支持比想象中的要好。在Firefox和Safari里都能正常运行。<br>但是有一个问题：如果没有清除descenders，Safari会把下划线放在文字上面🙃<br>Firefox：<br><img src="http://ggbond.qiniudn.com/2016-11-27%2013:47:03.png" alt="http://ggbond.qiniudn.com/2016-11-27%2013:47:03.png"></p>
+<p>Safari：<br><img src="http://ggbond.qiniudn.com/2016-11-27%2013:47:57.png" alt="http://ggbond.qiniudn.com/2016-11-27%2013:47:57.png"></p>
+<h3 id="TEXT-DECORATION-SKIP"><a href="#TEXT-DECORATION-SKIP" class="headerlink" title="TEXT-DECORATION-SKIP"></a>TEXT-DECORATION-SKIP</h3><p><code>text-decoration-skip</code>可以跳过descenders<br><img src="http://ggbond.qiniudn.com/2016-11-27%2013:49:05.png" alt="http://ggbond.qiniudn.com/2016-11-27%2013:49:05.png"></p>
+<p>这个属性是非标准的，现在只有Safari支持。所以需要加-webkit-前缀。Safari默认启用这个属性，这也就是为什么在没有指定这个值的时候，下划线也跳过了descenders<br>如果你在用Normalize，你应该知道最近的版本禁止了这个属性，来保证各个浏览器的显示一直。如果你想要一些梦幻般的下划线，你可以打开这个属性</p>
+<h3 id="TEXT-DECORATION-STYLE"><a href="#TEXT-DECORATION-STYLE" class="headerlink" title="TEXT-DECORATION-STYLE"></a>TEXT-DECORATION-STYLE</h3><p><code>text-decoration-style</code>提供了像<code>border-style</code>一样的属性。另外还添加了<code>wavy lines</code>:</p>
+<ul>
+<li>dashed</li>
+<li>dotted</li>
+<li>double</li>
+<li>solid</li>
+<li>wavy</li>
+</ul>
+<p>目前只有FireFox支持这个属性：<br><img src="http://ggbond.qiniudn.com/2016-11-27%2013:55:21.png" alt="http://ggbond.qiniudn.com/2016-11-27%2013:55:21.png"></p>
+<p>是不是看上去很眼熟？</p>
+<h3 id="少了什么？"><a href="#少了什么？" class="headerlink" title="少了什么？"></a>少了什么？</h3><p><code>text-decoration-*</code>这一系列属性确实比用其他的css属性来实现下划线要直观。但是看一看我们一开始的需求。这些属性不支持定义厚度和位置。</p>
+<p>经过一番研究，发现了下面两个属性：</p>
+<ul>
+<li>text-underline-width</li>
+<li>text-underline-position</li>
+</ul>
+<p>他们出现在早起的css草案里，但是因为缺少利润而没被实现。不用怪他们（指浏览器厂商）。</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>所以实现下划线最好的方式是什么？</p>
+<p><a href="https://codepen.io/rachsmith/details/YweZbG/" target="_blank" rel="external">这就要看实际情况了</a><br>对于字体小的问题，我推荐<code>text-decoration</code>，然后用<code>text-decoration-skip</code>。在大多数浏览器里看起来有点平淡。但是下划线就那样，人们也不会介意。但是如果你足够耐心，总是有机会的。总有一天，下划线在不需要更改任何东西的情况下变得很帅气。</p>
+<p>对于body text，可以用<code>background-image</code>。它能生效，而且很不错，还有Sass mixins。如果下划线很细或者需要和文本不一样 的颜色的时候，还可以用<code>text-shadow</code></p>
+<p>对于单行的文本，可以用<code>border-bottom</code>.<br>如果想跳过渐变和背景图上的descenders，用SVG filters。<br>将来的浏览器支持足够好了，答案是<code>text-decoration-*</code>属性</p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/04/用ES6生成器解决node回调地狱/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          用ES6生成器解决node回调地狱
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/19/Master-the-DOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Master the DOM</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="7种方式实现web下划线" data-title="7种方式实现web下划线" data-url="http://www.lixuejiang.me/2016/11/27/7种方式实现web下划线/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>2016如何学习JavaScript | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="虽然2016快结束了，但是这篇文章还是很有意思，值得一读，原文在此。很长的一篇文章，反应了现在的前端发展变化很快，特别是现在的react还有各种预编译的出现，导致现在即使做一个很简单的功能，都需要掌握很多繁杂的事情。做为一个前端，需要不停的了解很多新的名词，技术。而且这些名词层出不穷，也不知道什么时候会过时，疲于奔命。回过头来想一想，每一种技术的出现都有其原因和背景，都是为了解决生产中的某些问题，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016如何学习JavaScript">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/10/05/2016如何学习JavaScript/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="虽然2016快结束了，但是这篇文章还是很有意思，值得一读，原文在此。很长的一篇文章，反应了现在的前端发展变化很快，特别是现在的react还有各种预编译的出现，导致现在即使做一个很简单的功能，都需要掌握很多繁杂的事情。做为一个前端，需要不停的了解很多新的名词，技术。而且这些名词层出不穷，也不知道什么时候会过时，疲于奔命。回过头来想一想，每一种技术的出现都有其原因和背景，都是为了解决生产中的某些问题，">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016如何学习JavaScript">
+<meta name="twitter:description" content="虽然2016快结束了，但是这篇文章还是很有意思，值得一读，原文在此。很长的一篇文章，反应了现在的前端发展变化很快，特别是现在的react还有各种预编译的出现，导致现在即使做一个很简单的功能，都需要掌握很多繁杂的事情。做为一个前端，需要不停的了解很多新的名词，技术。而且这些名词层出不穷，也不知道什么时候会过时，疲于奔命。回过头来想一想，每一种技术的出现都有其原因和背景，都是为了解决生产中的某些问题，">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2016如何学习JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/05/2016如何学习JavaScript/" class="article-date">
+  	<time datetime="2016-10-05T09:16:04.000Z" itemprop="datePublished">2016-10-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2016如何学习JavaScript
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>虽然2016快结束了，但是这篇文章还是很有意思，值得一读，原文<a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.5dzju1fmk" target="_blank" rel="external">在此</a>。很长的一篇文章，反应了现在的前端发展变化很快，特别是现在的react还有各种预编译的出现，导致现在即使做一个很简单的功能，都需要掌握很多繁杂的事情。<br>做为一个前端，需要不停的了解很多新的名词，技术。而且这些名词层出不穷，也不知道什么时候会过时，疲于奔命。<br>回过头来想一想，每一种技术的出现都有其原因和背景，都是为了解决生产中的某些问题，或则是为了提高生产力，或者是为了提高用户体验等等。而每一种技术的实现都有其内在的原理，世界变化万千，里唯一贯。</p>
+<hr>
+
+<p><em>这篇文章是是受Circle CI的一篇叫“<a href="https://circleci.com/blog/its-the-future/" target="_blank" rel="external">这就是未来</a>”的启发而写，就像所有的JavaScript框架一样，没必要太严肃对待。在写这篇文章的时候不会创建任何的JavaScript框架。</em></p>
+<p>有人问我说：我现在有一个项目，但是说实话，我没有写过太多的web代码，我听说前端变化很快，你是这里最跟得上时代的web开发者。</p>
+<p><em>我确实是前端工程师，我就是你要找的人。我在2016年做web开发。可视化，音乐播放器，无人机踢球，等等。我刚从jsconf和reactconf回来，所以我知道最新的开发web app的技术。 </em></p>
+<a id="more"></a>
+<p>酷毙了，我想开发一个展示用户最近的活动的页面，所以我只需要从REST endpoint获取到数据，把他们现实到一个可以排序的表格里，当服务器有变化的时候更新这个表格。我在想是不是可以用jQuery来展示获取和展示数据？</p>
+<p><em>不，不要再用jQuery了，你应该学习react，现在是2016了。</em></p>
+<p>好吧，什么是React？</p>
+<p><em>它是Facebook的一帮人开发的一个超级酷的库，你能够很容易的处理视图的变化，从而给你的application代理高的可控性和更高的性能</em></p>
+<p>听起来不错，我可以用React来显示服务端的数据吗？</p>
+<p><em>当然可以，不过首先你得往你的web页面里添加 React 和 React DOM这两个库。</em></p>
+<p>等一等，为什么是两个库？</p>
+<p><em>其中一个是处理JSX的，另外一个是操作DOM的。</em></p>
+<p>JSX?什么是JSX?</p>
+<p><em>JSX是一种有点像xml的JavaScript语法扩展，是描述DOM的另外一种方式，你可以把它理解为更好的html。</em></p>
+<p>HTML有什么问题？</p>
+<p><em>现在是2016了，没人直接书写html了。</em></p>
+<p>好的，不管怎么说，如果我添加了这两个库我是不是就能用React了？</p>
+<p><em>不完全是，你还需要添加Babel，然后你才能用React</em></p>
+<p>另外一个库？Babel是什么？</p>
+<p><em>Babel是一个翻译器，把你写的任何版本的JavaScript翻译到目标版本的JavaScript。你没必要一定要用Babel，如果你还在用ES5.但是现在是2016了，你应该学学其他同学，用ES2016+来写你的代码</em></p>
+<p>ES5? ES2016+? 我有点懵逼了，什么是ES5和ES2016+?<br><em>ES5代表ECMAScript 5. 大多数浏览器实现了这个版本，所以用的人也最多.</em></p>
+<p>ECMAScript?</p>
+<p><em>对, 你知道吗, 现在的JavaScript是在1999的基础上发展而来的，它的第一版是在1995年发布的，那个时候JavaScript还叫livescript，只能运行在Netscape里。简直是一团糟。现在好了，现在已经有7个版本的JavaScript了</em></p>
+<p>7 个版本？. 讲真， ES5 and ES2016+ 是什么？</p>
+<p><em>第五和第七版本的JavaScript.</em></p>
+<p>等一下，为什么没有第六版本？</p>
+<p><em>你是说ES6吗？我的意思是，每个版本都是上一个版本的超集，因此，如果你用了es2016+，你也能用上一个版本的所有特性</em></p>
+<p>好，那为什么用ES2016+而不是ES6?</p>
+<p><em>当然了，你可以用ES6，但是如果你想用async和await这些特性，你需要用ES2016+.否则，你将会陷入如何正确控制ES6 generators异步回调的流程的泥潭里.</em></p>
+<p>你刚说这些我听不懂，这些名词让我很困惑。我只是想从服务器获取数据。我只是想从CDN加载jQuery，然后用ajax获取数据，为什么我不能这么做？</p>
+<p><em>现在是2016了，不再需要jQuery了，不需要再写意大利面条那样的代码了。每个人都知道</em></p>
+<p>好，所以我的选择是加载三个库，获取数据，显示一个HTML的表格。</p>
+<p><em>对，包含着三个库，然后通过一个模块管理器把他们打包成一个文件.</em></p>
+<p>我明白了，什么是模块管理器？</p>
+<p><em>具体的定义依赖运行环境，在web里，模块管理器是指那些支持AMD或者 CommonJS模块的东西</em></p>
+<p>好。。。吧！AMD 和 CommonJS又是什么鬼？</p>
+<p><em>有很多种方式来描述JavaScript的库和文件之间是如何交互的，你知道exports和requires吗？你可以写很多定义了AMD或者commonjs API的JavaScript文件，然后用Browserify把他们打包到一起</em></p>
+<p>什么是Browserify？</p>
+<p><em>它能帮助你把commonjs规范的文件打包正能再浏览器里运行的文件，之所有有这个东西是因为大多数人把他们的模块都发布到npm里</em></p>
+<p>npm？</p>
+<p><em>它是一个很大的库，大家把他们的代码或者依赖发布到上面</em></p>
+<p>就像CDN？</p>
+<p><em>不太像，更新一个中心化的数据库，每个人都可以发布或者下载库，所以你可以在本地开发的时候使用这些库，然后把他们发布到CDN</em></p>
+<p>哦，像Bower！</p>
+<p><em>对，现在是2016了，没人再用Bower了</em></p>
+<p>哦，我明白了，所以我需要从npm下载库？</p>
+<p><em>对，举个栗子，如果你想用React，你下载React，引入到你的代码里。对每一个流行的JavaScript库，都可以用这种方法</em></p>
+<p>哦，就行Angular！</p>
+<p><em>Angualar是2015年的事情了。对，angular也可以这样用，另外VueJS 和 RxJS是2016年比较库的两个库，想学一学吗？</em></p>
+<p>还是聚焦React，我今天已经学了很多东西了。所以，如果我想用React，那么我先从npm下载，然后再用Browserify吗？</p>
+<p><em>对</em></p>
+<p>这对于回去依赖然后把他们关联到一起，似乎太复杂了</p>
+<p><em>确实是这样，这就是为什么你需要一个像grunt，gulp，Broccoli这样的任务管理器来自动运行Browserify。哎呀，你甚至可以用Mimosa</em></p>
+<p>Grunt? Gulp? Broccoli? Mimosa? 我们讨论的是什么鬼?</p>
+<p><em>任务管理器，但是他们现在没有那么酷了，我们在2015年使用他们，后来用makefile，但是现在我们用webpack来打包所用的东西</em></p>
+<p>Makefiles？我以为那只是用在C或者C++里面？</p>
+<p><em>对，显然，在web里我们喜欢编译代码，然后关注基本的东西</em></p>
+<p>哦，你提到了webpack</p>
+<p>-<em>它是另外一个模块管理器，也是一个任务管理器，是更好的Browserify</em></p>
+<p>哦，好吧？为什么它更好？</p>
+<p><em>额，也是不是更好。它只是对于依赖如何处理，提供了更多的可选项。你可以用不同的模块管理器，不光是Commonjs一个。举个栗子，像支持原生的ES6的模块</em></p>
+<p>对这个CommonJS/ES6，我是彻底懵逼了</p>
+<p><em>每个人都是这样，但是你没必要对SystemJS关注太多</em></p>
+<p>上帝啊，另外一个js的名词，这个是SystemJS又是什么</p>
+<p><em>不像Browserify和webpa 1.x，SystemJS是一个动态的模块加载器，它把多个模块打包的多个文件里，而不是打包成一个文件</em></p>
+<p>等一等，我一直认为我们是要把我们的文件打包到一个大文件里，然后一次加载这个大文件。</p>
+<p><em>对，但是HTTP/2就要来了，对个http请求会更好</em></p>
+<p>等一下，我们还能不能添加那三个库了？</p>
+<p><em>我的意思是你可以从cdn加载这三个外部文件，但是你还是需要babel</em></p>
+<p>哦，that is bad right（不太懂这句话的意思，所以不翻译）？</p>
+<p><em>对，你需要包含整个babel-core，在生成环境中效率不好，所以你需要一序列的预处理。不需要压缩assets，uglify，内联css，异步JavaScript，另外</em></p>
+<p>我明白了，我明白了，所以如果不直接从cdn加载文件，应该怎么做？</p>
+<p><em>我会用Webpack + SystemJS + Babel combo把typescript翻译成js</em></p>
+<p>Typescript？我以为我们是直接写JavaScript</p>
+<p><em>Typescript就是JavaScript，是JavaScript的超集，包好了很多es6的特性</em></p>
+<p>我以为ES2016+就是ES6的超集了，那为什么还需要Typescript？</p>
+<p><em>因为你可以它可以让JavaScript支持强类型，减少运行时错误，现在是2016年，你应该让你的js支持强类型</em></p>
+<p>很显然，Typescript支持这个</p>
+<p><em>Flow也一样，尽管它只做类型检查</em></p>
+<p>Flow是什么？</p>
+<p><em>他是Facebook的一帮人搞出来的一个类型检查器，用OCaml实现，因为函数式编程很帅</em></p>
+<p>OCaml? 函数式编程?</p>
+<p><em>今天那些吊炸天的人在用的东西，现在是2016了，函数式编程？高阶函数？柯里化？纯函数？</em></p>
+<p>我不知道你在说什么</p>
+<p><em>没人在一开始就知道这些，你只需要知道函数式编程比面向对象编程好，我们应该在2016年使用它</em></p>
+<p>等一下，我在大学学习了过OOP，我觉得它很好啊？</p>
+<p><em>在java被oracle收购以前，OOP确实很好，我们现在也还在用，但是现在每个人都意识到修改程序状态就像踢婴儿，所以现在每个人都转向了不可变数据和函数式编程。Haskell的那些人已经叫了好今年了，另外不要忘了Elm那些人。幸运的是，在web里，我们有像Ramda这样的库让我们可以直接用JavaScript来实现函数式编程</em></p>
+<p>你是因为他删除了名字吗？到底什么是Ramda？</p>
+<p><em>不是。Ramda，就像lamada，David Chambers发明的库</em></p>
+<p>谁？</p>
+<p><em>David Chambers，吊炸天的一个人。Ramda的一个贡献者。你还需要了解Erik Meijer，如果你真的想学函数式编程</em></p>
+<p>Erik Meijer是谁？</p>
+<p><em>一个搞函数式编程的人，也很屌。你还应该了解Tj，Jash Kenas, Sindre Sorhus, Paul Irish还有。。。</em></p>
+<p>好吧，我必须阻止你继续说下了。所有这些都很好，但是我觉得对于获取数据然后显示出来，这些都太复杂了，而且没必要。我很确定我不需要了解这些人，也不需要学习这些事情来创建一个展示动态数据的表格。所以让我们回到react，我应该怎么样用React从服务端获取数据？</p>
+<p><em>额，实际上，你不是用react从服务端获取数据，而是用react显示数据</em></p>
+<p>好吧，你杀了我吧，那你用什么获取数据？</p>
+<p><em>Fetch</em></p>
+<p>用Fetch来fetch数据，起名字的人需要一个词库</p>
+<p><em>我知道，Fetch是通过XMLHttpRequests来获取数据的原生实现的命名</em></p>
+<p>哦，那不就是AjAX吗？</p>
+<p><em>ajax仅仅是用了XMLHttpRequests，但是，很确定的是，Fetch允许你在promise的基础上使用ajax，这样你就可以避免回调地狱</em></p>
+<p>回调地狱？</p>
+<p><em>对，每次你向服务器发送一个一部请求，都需要等待服务器的响应，所以你需要再函数里嵌套函数，这就被叫做回调地狱</em></p>
+<p>哦，那么promise就是解决这个问题的吗？</p>
+<p><em>确实是，通过promise来管理回调，你就能更容易的写出可以让人理解的代码，然后模拟测试他们，也可以一次模拟一个请求，然后等他们全部返回</em></p>
+<p>然后Fetch可以完成这件事情？</p>
+<p><em>对，除非你用的是比较新的浏览器，否则你需要包含Fetch的polyfill或者使用Request, Bluebird 或者 Axios</em></p>
+<p>我到底需要了解多少库，到底有多少库？</p>
+<p><em>这可是JavaScript，有成千上万的库来做同一件事情，我们了解库，事实上，我们有最好的库，我们的库很大，有时候我们在库里还包含了Guy Fieri的画像</em></p>
+<p>你刚提到了Guy Fieri，我们先跳过，Request, Bluebird 或者 Axios这些到底是干什么的？</p>
+<p><em>他们是发起XMLHttpRequests请求然后返回promise的库</em></p>
+<p>难道jQuery的ajax方法一开始没有返回promise对象吗？</p>
+<p><em>在2016年我们不用“J”这个单词了。只用Fetch，如果浏览器不支持，就用Bluebird, Request或者Axios这些polyfill来代替。然后用内置了await方法的await来管理promise，这样你就有正确的控制流了。</em></p>
+<p>这是你第三次提到await了，但是我完全不知道这是啥？</p>
+<p><em>Await允许你阻塞一个异步调用，允许你更好的控制啥时候去获取数据，提高了代码的可读性。这很赞，你只需要确保添加了babel，或者用syntax-async-functions还有transform-async-to-generator插件</em></p>
+<p>疯了吧？</p>
+<p><em>没有，更疯狂的是你要先预编译typescript的代码，然后用babel把编译后的代码转成能使用await的</em></p>
+<p>啥？typescript里不包含这个？</p>
+<p><em>下个版本里会有，现在的1.7版本的目标是ES6.所以如果你想在浏览器里用await，首先你需要把typescript编译到ES6.然后用babel把es6编译到es5</em></p>
+<p>我不知道说什么了</p>
+<p><em>其实很简单，用typescript来写所有的代码，所有用的Fetch的模块都用babel的 stage-3 preset编译到ES6.然后用SystemJS加载。如果没有用Fetch，polyfill或者用Bluebird, Request or Axios。用await来处理所有的promise</em></p>
+<p>对于简单我们有不同的定义。所以，经过这么多仪式，我终于拿到了数据，现在可以用react来显示了吗？</p>
+<p><em>你的页面需要处理状态变化吗？</em></p>
+<p>额，我觉得没有必要，我只需要显示一些数据</p>
+<p><em>Oh，谢天谢地，不然的话我还要向你介绍Flux，还有向Flummox, Alt, Fluxible这些实现了flux的库。而且说实话，你应该用Redux。</em></p>
+<p>我想跳过这些名字，说到底，我只是想展示数据。</p>
+<p><em>哦，如果你仅仅是想展示数据，那一开始你就没必要用react，你只需要用模板引擎就好了。</em></p>
+<p>你在开玩笑吗？你觉得这很好玩吗？你就是这样对待那些爱你的人的吗？</p>
+<p><em>我只是解释你可以用的方案</em></p>
+<p>stop！</p>
+<p><em>我的意思是，即使只是用模板引擎，如果我是你的话我也会用ypescript + SystemJS + Babel combo</em></p>
+<p>我只是想显示一些数据，不是要扮演sub zero的死亡。只要告诉我要用什么模板引擎，我来用就好了。</p>
+<p><em>有很多，你熟悉哪一个</em></p>
+<p>咕~~(╯﹏╰)b，记不起名字了，这是很久以前的事情了。（大概是不知道有哪些模板引擎）</p>
+<p><em>jTemplates? jQote? PURE?</em></p>
+<p>额，没印象，还有其他的吗？</p>
+<p><em>Transparency? JSRender? MarkupJS? KnockoutJS? 有双向绑定的？</em></p>
+<p>还有其他的吗？</p>
+<p><em>PlatesJS? jQuery-tmpl? Handlebars?现在还有人在用</em></p>
+<p>也许吧，有和最后一个类似的吗？</p>
+<p><em>Mustache, underscore?说实话我觉得lodash都有自己的模板引擎了，这些都是2014年的了</em></p>
+<p>还有更新的吗？</p>
+<p><em>Jade? DustJS?</em></p>
+<p>不是</p>
+<p><em>DotJS? EJS?</em></p>
+<p>不是</p>
+<p><em>Nunjucks? ECT?</em></p>
+<p>不是</p>
+<p><em>额，应该有像typescript语法的，jade？</em></p>
+<p>不对，你刚说过了</p>
+<p><em>我的意思是Pug，也就是jade，jade现在就是pug了</em></p>
+<p>不，想不起来了，你会用哪一个？</p>
+<p><em>也许会用ES6的模板引擎</em></p>
+<p>让我想想，这需要ES6？</p>
+<p><em>完全正确</em></p>
+<p>看我使用的是什么浏览器，还需要babel</p>
+<p><em>完全正确</em></p>
+<p>另外，如果我不想添加整个核心的库，我需要从npm加载他们。</p>
+<p><em>完全正确</em></p>
+<p>需要像Browserify, or Wepback, 或者其他类似SystemJS的东西</p>
+<p><em>完全正确</em></p>
+<p>如果不用webpack，还需要一个任务运行器</p>
+<p><em>完全正确</em></p>
+<p>另外，如果我用了函数式编程还有强类型语言，我首先需要预编译typescript，或者引入流程控制的东西</p>
+<p><em>完全正确</em></p>
+<p>如果我想用await的话还需要babel</p>
+<p><em>完全正确</em></p>
+<p>因此我就可以用 Fetch, promises，控制流，还有其他神奇的东西</p>
+<p><em>不要忘了polyfill Fetch，Safari现在还不支持</em></p>
+<p>你知道吗？我觉得我们可以搞定了，事实上，我觉得我可以搞定了，我可以搞定web，我可以搞定JavaScript的一切</p>
+<p><em>挺好的，接下来的几年我们会继续编写Elm或者 WebAssembly</em></p>
+<p>我还是去写后端吧，我搞不定这么多的变化，版本，编译器，转译器。JavaScript社区简直疯了，如果它觉得每个人都能跟上脚步的话。</p>
+<p><em>我知道了，你可以去Python社区试试</em></p>
+<p>为什么？</p>
+<p><em>难道没听过Python 3吗</em></p>
+<p>–完–</p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/11/我理解的浏览器兼容性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          我理解的浏览器兼容性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/03/JavaScript-MVC简单例子/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript MVC简单例子</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016如何学习JavaScript" data-title="2016如何学习JavaScript" data-url="http://www.lixuejiang.me/2016/10/05/2016如何学习JavaScript/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

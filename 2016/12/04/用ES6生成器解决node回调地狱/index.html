@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>用ES6生成器解决node回调地狱 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文A Study on Solving Callbacks with JavaScript Generators
+当我开始写nodejs的时候，非常讨厌两件事情：1.所有流行的模板引擎，2.回调的扩散(回调地狱)。我愿意忍受回调，因为我理解基于事件的服务端是多么的强大。但是自从我看到JavaScript支持生成器以后，我知道我等了很久的这一天终于到来了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用ES6生成器解决node回调地狱">
+<meta property="og:url" content="http://www.lixuejiang.me/2016/12/04/用ES6生成器解决node回调地狱/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="原文A Study on Solving Callbacks with JavaScript Generators
+当我开始写nodejs的时候，非常讨厌两件事情：1.所有流行的模板引擎，2.回调的扩散(回调地狱)。我愿意忍受回调，因为我理解基于事件的服务端是多么的强大。但是自从我看到JavaScript支持生成器以后，我知道我等了很久的这一天终于到来了。">
+<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用ES6生成器解决node回调地狱">
+<meta name="twitter:description" content="原文A Study on Solving Callbacks with JavaScript Generators
+当我开始写nodejs的时候，非常讨厌两件事情：1.所有流行的模板引擎，2.回调的扩散(回调地狱)。我愿意忍受回调，因为我理解基于事件的服务端是多么的强大。但是自从我看到JavaScript支持生成器以后，我知道我等了很久的这一天终于到来了。">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-用ES6生成器解决node回调地狱" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/04/用ES6生成器解决node回调地狱/" class="article-date">
+  	<time datetime="2016-12-04T02:45:02.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用ES6生成器解决node回调地狱
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文<a href="http://jlongster.com/A-Study-on-Solving-Callbacks-with-JavaScript-Generators" target="_blank" rel="external">A Study on Solving Callbacks with JavaScript Generators</a></p>
+<p>当我开始写nodejs的时候，非常讨厌两件事情：1.所有流行的模板引擎，2.回调的扩散(回调地狱)。我愿意忍受回调，因为我理解基于事件的服务端是多么的强大。但是自从我看到JavaScript支持生成器以后，我知道我等了很久的这一天终于到来了。</p>
+<a id="more"></a>
+<p>今天，他们在<a href="http://wingolog.org/archives/2013/05/08/generators-in-v8" target="_blank" rel="external">V8</a>和油猴子里实现了这个规范，新时代到来了(海贼王要诞生了。。)</p>
+<p>尽管在V8（node）的命令行需要加harmony参数才能使用生成器，而且在所有的浏览器里实现还需要一段时间（Firefox已经全部支持了）。我们仍然可以学习怎么样用生成器来写异步代码。我们应该尽早掌握这种方法。</p>
+<p>你可以下载0.11版本以后的node，然后给node传递–harmony 或者–harmony-generators参数来启用node对生成器的支持。我相信在不久的将来，当es6成为最终的标准的时候，这两个参数就不再需要了。</p>
+<p>所以，到底生成器是如何解决回调地狱的呢？生成器函数可以通过yield关键字暂停执行，返回一个值。下次调用的时候从上次暂停的地方继续执行。这就意味着我们可以暂停一个函数的执行，等这个函数需要等待另外一个函数的执行结果的时候，而不是传递一个回调函数给它。</p>
+<p>用英语来解释一种编程语言的结构是不是不好玩？那就直接上代码吧。</p>
+<blockquote>
+<p>为了确保读者能跟上我的脚步，可以阅读<a href="http://jlongster.com/A-Closer-Look-at-Generators-Without-Promises" target="_blank" rel="external">A Closer Look at Generators Without Promises</a></p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>在我们深入了解异步之前，我们先看看原生的生成器函数。生成器是通过function* 关键字定义的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function* foo(x) &#123;</div><div class="line">    yield x + 1;</div><div class="line"></div><div class="line">    var y = yield null;</div><div class="line">    return x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我不想过多的关注这段代码，而想聚焦于怎么使用这个异步结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var gen = foo(5);</div><div class="line">gen.next(); // &#123; value: 6, done: false &#125;</div><div class="line">gen.next(); // &#123; value: null, done: false &#125;</div><div class="line">gen.send(8); // &#123; value: 13, done: true &#125;</div></pre></td></tr></table></figure>
+<p>如果我想记笔记，我会这样写：</p>
+<ul>
+<li>yield后面可以跟任何的表达式，这对于在任何结构中暂停一个函数的执行非常有用，例如<code>foo(yield x, yield y)</code>或者循环</li>
+<li>可以像调用函数一样调用生成器。但是他只返回一个生成器对象。你需要调用next方法唤起生成器的继续执行。当需要给生成器传值的时候，调用send方法。<code>gen.next()</code>和<code>gen.next()</code>等价。<code>gen.throw</code>从生成器内部抛出一个异常</li>
+<li>生成器不好返回原生值，而是返回一个有两个属性的对象：value和done。这样就很容易判断一个生成器是否执行结束。而不是像老的api一样抛出停止迭代的异常</li>
+</ul>
+<h2 id="异步解决方案1：suspend"><a href="#异步解决方案1：suspend" class="headerlink" title="异步解决方案1：suspend"></a>异步解决方案1：suspend</h2><p>你也许会问上面的代码到底是怎么解决node的回调地狱的。其实，如果我们可以暂停一个函数的执行。我们就可以通过一些语法糖，让异步的回调看上去像同步的一样。</p>
+<p>问题来了：什么是语法糖？<br>第一个解决方案是<a href="https://github.com/jmar777/suspend" target="_blank" rel="external">suspend库</a>。他是我们能想到的最简单的方式了。只有16行<a href="https://github.com/jmar777/suspend/blob/master/lib/suspend.js" target="_blank" rel="external">代码</a></p>
+<p>用这个库的代码像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var suspend = require(&apos;suspend&apos;),</div><div class="line">    fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">suspend(function*(resume) &#123;</div><div class="line">    var data = yield fs.readFile(__filename, &apos;utf8&apos;, resume);</div><div class="line">    if(data[0]) &#123;</div><div class="line">        throw data[0];</div><div class="line">    &#125;</div><div class="line">    console.log(data[1]);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>suspend函数把生成器转换成了一个一般的函数。它给生成传递一个resume函数，作为异步函数的回调。另外它会通过一个含有error和value两个值的数组唤醒生成器。</p>
+<p>生成器和resume之间的关系很有意思，但是它也有弊端。首先，返回一个两个元素的数组很烦人，即使用解构（var [err, res] = yield foo(resume)）。我更倾向于返回一个值，如果有错误就抛出异常。看上去这个库支持这个选项，但是我认为应该把它作为默认值。</p>
+<p>另外，需要显示的传递resume参数有点尴尬，而且也不好组合，因为有时候我想等到上面的函数执行完毕，我仍然需要传递一个callback参数进去，就像以前的node一样。这将导致更多的混乱和错误处理。因为error需要继续传递而不是抛出异常，所以你需要在每个异步调用里都手动检查，然后继续传递error对象。</p>
+<p>最后，你也没办法做一些像并行处理一些复杂的控制流这种事情。<a href="https://github.com/jmar777/suspend#what-about-parallel-execution-mapping-etc" target="_blank" rel="external">README</a>里说其他的控制流库解决了这个问题。你需要结合suspend和这些库中的其中一个。但是我更想看到生成器原生支持这些库。</p>
+<blockquote>
+<p>ps:<a href="https://twitter.com/kriskowal" target="_blank" rel="external">kriskowal</a> 提到了<a href="https://twitter.com/creationix" target="_blank" rel="external">creationix</a>写的<a href="https://gist.github.com/creationix/5544019" target="_blank" rel="external">gist</a>.更好的实现了单独的生成器来处理基于回调的代码。它很酷，默认抛出error。而且更简洁</p>
+</blockquote>
+<h2 id="异步解决方案2：Promises"><a href="#异步解决方案2：Promises" class="headerlink" title="异步解决方案2：Promises"></a>异步解决方案2：Promises</h2><p>更好的处理异步的方案是<a href="http://promises-aplus.github.io/promises-spec/" target="_blank" rel="external">promises</a>.promise是一个代表了将来值的一个对象。你可以组合promise来代表异步调用的控制流行为。</p>
+<p>我不打算在这里过多的介绍异步控制流，这需要费好多时间，另外已经有了很好的<a href="http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/" target="_blank" rel="external">解释</a>,最近有很多人强调要定义promise的API和行为，允许在不同的库之间交互，其实想法很简单。</p>
+<p>我用的是<a href="https://github.com/kriskowal/q" target="_blank" rel="external">Q</a>,因为他已经支持生成器，而且比较成熟了。它的早起实现叫<a href="http://taskjs.org/" target="_blank" rel="external">taskjs</a>，但是不是标准的promise实现。</p>
+<p>让我们看一个真实世界的例子。我们经常用一些简单愚蠢的例子。下面这段代码创建一个博客对象，然后返回它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">client.hmset(&apos;blog::post&apos;, &#123;</div><div class="line">    date: &apos;20130605&apos;,</div><div class="line">    title: &apos;g3n3rat0rs r0ck&apos;,</div><div class="line">    tags: &apos;js,node&apos;</div><div class="line">&#125;, function(err, res) &#123;</div><div class="line">    if(err) throw err;</div><div class="line"></div><div class="line">    client.hgetall(&apos;blog::post&apos;, function(err, post) &#123;</div><div class="line">        if(err) throw err;</div><div class="line"></div><div class="line">        var tags = post.tags.split(&apos;,&apos;);</div><div class="line">        var posts = [];</div><div class="line"></div><div class="line">        tags.forEach(function(tag) &#123;</div><div class="line">            client.hgetall(&apos;post::tag::&apos; + tag, function(err, taggedPost) &#123;</div><div class="line">                if(err) throw err;</div><div class="line">                posts.push(taggedPost);</div><div class="line"></div><div class="line">                if(posts.length == tags.length) &#123;</div><div class="line">                    // do something with post and taggedPosts</div><div class="line"></div><div class="line">                    client.quit();</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这甚至不是一个复杂的例子，你看看它有多丑。回调的很快把代码挤到了屏幕的右边。而且，为了查询所有的标签。我们需要手动管理每一个查询条件，确保他们已经准备好。</p>
+<p>让我们用Q来重新实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var db = &#123;</div><div class="line">    get: Q.nbind(client.get, client),</div><div class="line">    set: Q.nbind(client.set, client),</div><div class="line">    hmset: Q.nbind(client.hmset, client),</div><div class="line">    hgetall: Q.nbind(client.hgetall, client)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">db.hmset(&apos;blog::post&apos;, &#123;</div><div class="line">    date: &apos;20130605&apos;,</div><div class="line">    title: &apos;g3n3rat0rs r0ck&apos;,</div><div class="line">    tags: &apos;js,node&apos;</div><div class="line">&#125;).then(function() &#123;</div><div class="line">    return db.hgetall(&apos;blog::post&apos;);</div><div class="line">&#125;).then(function(post) &#123;</div><div class="line">    var tags = post.tags.split(&apos;,&apos;);</div><div class="line"></div><div class="line">    return Q.all(tags.map(function(tag) &#123;</div><div class="line">        return db.hgetall(&apos;blog::tag::&apos; + tag);</div><div class="line">    &#125;)).then(function(taggedPosts) &#123;</div><div class="line">        // do something with post and taggedPosts</div><div class="line"></div><div class="line">        client.quit();</div><div class="line">    &#125;);</div><div class="line">&#125;).done();</div></pre></td></tr></table></figure>
+<p>我们把这些基于回调的代码改成了基于promise的。但是这个只是个简单的例子，只要我们有了promise，就可以调用then方法来等等异步操作的执行结果。更多的细节请参考promises/A+<a href="http://promises-aplus.github.io/promises-spec/" target="_blank" rel="external">规范</a>。</p>
+<p>Q还实现了其他的一些方法，比如all：一个promise的数组作为参数，等待他们都执行完毕。当执行完的时候，也就意味着所有的异步流程都执行结束了，而且所有未被处理的错误都被抛出。根据promises/A+规范。所有的异常都会被转换为error，然后传递给错误处理函数。所以需要却被没被处理的错误被重新抛出（如果你不太理解，请阅读这篇<a href="https://blog.domenic.me/youre-missing-the-point-of-promises/" target="_blank" rel="external">文章</a>）。</p>
+<p>注意到我们需要嵌套最终的promise handler。因为我们需要访问post和taggedPosts，不幸的是，这看起来有点像callback。</p>
+<p>是时候见识一下生成器的力量了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Q.async(function*() &#123;</div><div class="line">    yield db.hmset(&apos;blog::post&apos;, &#123;</div><div class="line">        date: &apos;20130605&apos;,</div><div class="line">        title: &apos;g3n3rat0rs r0ck&apos;,</div><div class="line">        tags: &apos;js,node&apos;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    var post = yield db.hgetall(&apos;blog::post&apos;);</div><div class="line">    var tags = post.tags.split(&apos;,&apos;);</div><div class="line"></div><div class="line">    var taggedPosts = yield Q.all(tags.map(function(tag) &#123;</div><div class="line">        return db.hgetall(&apos;blog::tag::&apos; + tag);</div><div class="line">    &#125;));</div><div class="line"></div><div class="line">    // do something with post and taggedPosts</div><div class="line"></div><div class="line">    client.quit();</div><div class="line">&#125;)().done();</div></pre></td></tr></table></figure>
+<p>这是不是很神奇？让我们看看到底发生了什么<br>Q.async传入一个生成器，返回一个调用生成器的函数，有点像suspend库。然而，有一个关键的区别：生成器yields promise。Q把promise和每一个生成器绑定到一起，当promisefullfill的时候唤醒生成器，返回结果。</p>
+<p>我们不需要处理笨拙的resume函数，promise隐式处理了。我们从promise中获益良多。</p>
+<p>其中一个好处是我们可以在需要的时候使用Q，比如Q.all，Q.all可以并行的运行一系列异步操作，用这种方法，可以很容易的把显式的Q promise和隐式的promise结合在一起来创建看上去很简介的复杂的控制流。<br>另外，还没有嵌套的问题。因为post和taggedPosts在相同的作用域里，所以我们不需要关心then链会打破作用域。这太帅了。</p>
+<p>错误处理有点棘手。在生成器里使用promise之前，你需要确实理解promise是怎么样工作的。在promise里错误和异常会被传递给错误处理函数，而不是被抛出。你可以通过错误回调来处理抛出的错误。<code>someGenerator().then(null, function(err) { ... }).</code></p>
+<p>另外，需要注意的是可以使用gen.throw方法抛出生成器内部的promise错误。这也就意味着可以用try/catch来处理生成器内部的错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Q.async(function*() &#123;</div><div class="line">    try &#123;</div><div class="line">        var post = yield db.hgetall(&apos;blog::post&apos;);</div><div class="line">        var tags = post.tags.split(&apos;,&apos;);</div><div class="line"></div><div class="line">        var taggedPosts = yield Q.all(tags.map(function(tag) &#123;</div><div class="line">            return db.hgetall(&apos;blog::tag::&apos; + tag);</div><div class="line">        &#125;));</div><div class="line"></div><div class="line">        // do something with post and taggedPosts</div><div class="line">    &#125;</div><div class="line">    catch(e) &#123;</div><div class="line">        console.log(e);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    client.quit();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>它会按照你期望的方式工作。db.hgetall产生的错误都会被catch捕获，即使是嵌套的Q.all产生的错误。当然了，如果没有try/catch的话，异常会被转换为错误，然后传递给调用promise的错误处理函数。</p>
+<p>思考一下：我们可以用try/catch来给异步代码添加错误处理函数。错误处理的动态作用域也能正常工作。所有在try里发生的未被处理的异常都会扔给catch。还可以用finally。</p>
+<p>另外，当你调用promise的done方法的时候，默认会返回all方法的异步代码发生的错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var getTaggedPosts = Q.async(function*() &#123;</div><div class="line">    var post = yield db.hgetall(&apos;blog::post&apos;);</div><div class="line">    var tags = post.tags.split(&apos;,&apos;);</div><div class="line"></div><div class="line">    return Q.all(tags.map(function(tag) &#123;</div><div class="line">        return db.hget(&apos;blog::tag::&apos; + tag);</div><div class="line">    &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的代码是标准库代码，创建promise但是不关心错误处理，你可以这样调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Q.async(function*() &#123;</div><div class="line">    var tagged = yield getTaggedPosts();</div><div class="line">    // do something with the tagged array</div><div class="line">&#125;)().done();</div></pre></td></tr></table></figure>
+<p>这是最上层的代码。就像前面说的，done方法确保抛出未被处理的异常。我相信上面这种模式很普遍，但是还有一种新的方法。getTaggedPosts是库方法，也就是一种promise-generating方法。</p>
+<p>我提了一个Q.spawn的<a href="https://github.com/kriskowal/q/pull/306" target="_blank" rel="external">PR</a>,现在已经merge到Q里面了，现在可以更简洁的写上面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Q.spawn(function*() &#123;</div><div class="line">    var tagged = yield getTaggedPosts();</div><div class="line">    // do something with the tagged array</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>spawn需要一个生成器对象作为参数，然后立即调用它，自动抛出未处理的错误。它其实等价于<code>Q.done(Q.async(function*() { ... })())</code></p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><p>我们的基于promise的生成器代码越来越屌了，用一些语法糖，我们可以甩掉很多异步流带来的包袱</p>
+<p>研究了这么久，这里有一些模式需要注意：</p>
+<h2 id="什么时候用"><a href="#什么时候用" class="headerlink" title="什么时候用"></a>什么时候用</h2><p>如果只有一个简单的函数等待一个promise，那没必要用生成器，比较下面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var getKey = Q.async(function*(key) &#123;</div><div class="line">    var x = yield r.get(dbkey(key));</div><div class="line">    return x &amp;&amp; parseInt(x, 10);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>和这个代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function getKey(key) &#123;</div><div class="line">    return r.get(dbkey(key)).then(function(x) &#123;</div><div class="line">        return x &amp;&amp; parseInt(x, 10);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我觉得上一个更简洁</p>
+<h2 id="spawnMap"><a href="#spawnMap" class="headerlink" title="spawnMap"></a>spawnMap</h2><p>我发现我自己做了很多事情:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yield Q.all(keys.map(Q.async(function*(dateKey) &#123;</div><div class="line">    var date  = yield lookupDate(dateKey);</div><div class="line">    obj[date] = yield getPosts(date);</div><div class="line">&#125;)));</div></pre></td></tr></table></figure>
+<p>用spawnMap还是很有帮助的，它帮你实现了<code>Q.all(arr.map(Q.async(...)))</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">yield spawnMap(keys, function*(dateKey) &#123;</div><div class="line">    var date  = yield lookupDate(dateKey);</div><div class="line">    obj[date] = yield getPosts(date);</div><div class="line">&#125;)));</div></pre></td></tr></table></figure>
+<h2 id="asyncCallback"><a href="#asyncCallback" class="headerlink" title="asyncCallback"></a>asyncCallback</h2><p>我发现的最后一件事是有好几次我想创建一个Q.async函数，我需要确保所有的错误都会被重新抛出，但是我不能把上面的callback转成 Q.async，因为所有的错误多被静默处理了。而且我也不能用Q.spawn，因为它不是立即执行的。这种情况发生在来自于不同库的常规回调上，比如express的<code>app.get(&#39;/url&#39;, function() { ... })</code></p>
+<p>也许有时候确确实实需要异步回调：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function asyncCallback(gen) &#123;</div><div class="line">    return function() &#123;</div><div class="line">        return Q.async(gen).apply(null, arguments).done();</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">app.get(&apos;/project/:name&apos;, asyncCallback(function*(req, res) &#123;</div><div class="line">    var counts = yield db.getCounts(req.params.name);</div><div class="line">    var post = yield db.recentPost();</div><div class="line"></div><div class="line">    res.render(&apos;project.html&apos;, &#123; counts: counts,</div><div class="line">                                 post: post &#125;);</div><div class="line">&#125;));</div></pre></td></tr></table></figure>
+<h2 id="最后的想法"><a href="#最后的想法" class="headerlink" title="最后的想法"></a>最后的想法</h2><p>当我发现生成器的时候，我希望它确实能够改善异步代码。事实证明确实可以，尽管你需要确实理解promise结合生成器是怎么工作的。把promise隐式话会把他们弄的有点神秘，所以在你理解promise之前，我不会用async和spawn。</p>
+<p>尽管我希望js的魔法能过延续，所有的这些都会被js隐式处理，这种解决方案还是很赞。现在我们有了一种简洁的处理异步行为的方式，这种方式很有用，不仅仅用来处理文件操作。甚至可以写一些分布式的代码，比如跨CPU的或者跨机器的。</p>
+<p>《完》<br>另附上两个链接：<br>1.<a href="http://es6katas.org/" target="_blank" rel="external">es6katas</a>,一个通过tdd练习es6的网站<br>2.<a href="http://www.infoq.com/cn/es6-in-depth/" target="_blank" rel="external">深入浅出ES6</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/18/深入研究Virtual-DOM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          深入研究Virtual DOM
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/27/7种方式实现web下划线/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">7种方式实现web下划线</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="用ES6生成器解决node回调地狱" data-title="用ES6生成器解决node回调地狱" data-url="http://www.lixuejiang.me/2016/12/04/用ES6生成器解决node回调地狱/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>
