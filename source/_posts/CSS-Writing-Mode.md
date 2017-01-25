@@ -5,7 +5,7 @@ tags: [翻译,CSS]
 ---
 
 最近需要实现一个文字竖排的效果，类似下图这种效果，所以研究了一下css的writing mode，顺便翻译了一篇[文章](https://24ways.org/2016/css-writing-modes/)
-![css write mode](https://24ways.org/2016/css-writing-modes/)
+![css write mode](http://ggbond.qiniudn.com/2017-01-25%2009:48:57.png)
 
 <!--more-->
 如果你没有太多时间，我就从结果开始，来点餐前小菜。你可以用一些鲜为人知的，但是很重要的而且很强大的css属性来让文本竖着排列。就像下面这样：
