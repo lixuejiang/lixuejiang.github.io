@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>CSS Writing Mode | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近需要实现一个文字竖排的效果，类似下图这种效果，所以研究了一下css的writing mode，顺便翻译了一篇文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Writing Mode">
+<meta property="og:url" content="http://www.lixuejiang.me/2017/01/25/CSS-Writing-Mode/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="最近需要实现一个文字竖排的效果，类似下图这种效果，所以研究了一下css的writing mode，顺便翻译了一篇文章">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-01-25%2009:48:57.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-01-25%2009:54:21.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-02-19%2009:54:12.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-02-19%2009:54:39.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-02-19%2009:55:09.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-02-19%2009:55:39.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-02-19%2009:57:59.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/arabicsystem.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/UNenar.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/hansystem.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/voguejpcover.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/voguejppage.jpg">
+<meta property="og:image" content="https://www.chenhuijing.com/zh-type/">
+<meta property="og:image" content="http://ggbond.qiniudn.com/chenhuijingdemo.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/mongolianwikipedia.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/mongoliansystem.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/verticalexpected.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/verticalactual.png">
+<meta property="og:image" content="http://ggbond.qiniudn.com/wm4A.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/wm4B.jpg">
+<meta property="og:image" content="http://ggbond.qiniudn.com/wm4C.jpg">
+<meta property="og:updated_time" content="2017-02-19T08:09:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS Writing Mode">
+<meta name="twitter:description" content="最近需要实现一个文字竖排的效果，类似下图这种效果，所以研究了一下css的writing mode，顺便翻译了一篇文章">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/2017-01-25%2009:48:57.png">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+				<section class="switch-part switch-part5">
+					<center>
+						<embed src="https://www.cllgeek.com/hai/honehone_clock01.swf" type="application/x-shockwave-flash" width="260" height="100" align="middle" name="honehoneclock" autostart="true">
+					</center>	
+				</section>
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-CSS-Writing-Mode" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/25/CSS-Writing-Mode/" class="article-date">
+  	<time datetime="2017-01-25T01:46:00.000Z" itemprop="datePublished">2017-01-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS Writing Mode
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近需要实现一个文字竖排的效果，类似下图这种效果，所以研究了一下css的writing mode，顺便翻译了一篇<a href="https://24ways.org/2016/css-writing-modes/" target="_blank" rel="external">文章</a><br><img src="http://ggbond.qiniudn.com/2017-01-25%2009:48:57.png" alt="css write mode"></p>
+<a id="more"></a>
+<p>如果你没有太多时间，我就从结果开始，来点餐前小菜。你可以用一些鲜为人知的，但是很重要的而且很强大的css属性来让文本竖着排列。就像下面这样：</p>
+<p><img src="http://ggbond.qiniudn.com/2017-01-25%2009:54:21.png" alt=""></p>
+<p>除了竖排文本，还可以用同样的方法来设置icon和其他的按钮，当然了也可以设置任何其他的元素。</p>
+<p>我用的css属性改变了浏览器思考元素方向的方式，把元素相当于原来正常的方向旋转了90°。看一下下面的codepen，高亮H1,看看鼠标的显示：</p>
+<iframe id="cp_embed_apypQr" src="//codepen.io/lixuejiang/embed/apypQr?height=300&theme-id=1&slug-hash=apypQr&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>代码很简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  writing-mode: vertical-rl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个属性改变了h1的属性模式，从默认的水平从上到下变成了垂直从左到右。如果把这个属性运用到了html跟元素，则整个页面的书写方式都会改变。甚至会影响滚动条的方向。</p>
+<p>在上面的例子里，只是改变了h1的书写方式，其他元素并不受影响。</p>
+<p>现在餐前小菜已经结束，下面进入正餐，解释一下<a href="https://drafts.csswg.org/css-writing-modes/" target="_blank" rel="external">css 书写模式规范</a></p>
+<h1 id="为什么需要学习wtiting-modes"><a href="#为什么需要学习wtiting-modes" class="headerlink" title="为什么需要学习wtiting modes"></a>为什么需要学习wtiting modes</h1><p>有三个理由需要学习这个属性，包括西方的听众，我会解释整个系统，而不是快速告诉你结果：</p>
+<ul>
+<li>1.我们生活的世界是很大，学习其他语言很好玩，你们当中的许多人也许用中文，日文或者韩文来写你们的页面。</li>
+<li>2.用writing-mode来改变字节的侧面很酷。这个css属性可以用在所有你能想到的地方，即使你只使用英语</li>
+<li>3.最重要的是，理解书写模式对理解Flexbox和 CSS Grid很有帮助。在学习Writing Mode之前，我觉得我的知识体系很有一个很大的坑，我并没有完全理解Grid和Flexbox的工作方式。当我接触到Writing Mode之后，Grid和Flexbox都变得容易起来。也能理解align-<em>和justify-</em>这类对齐属性。</li>
+</ul>
+<p>不管你是否知道，writing mode是每一个布局首先创建的块。你可以使用默认的LTR方向的，垂直的TTB方向，也可以指定特定的值：</p>
+<h1 id="CSS-属性"><a href="#CSS-属性" class="headerlink" title="CSS 属性"></a>CSS 属性</h1><p>writing-mode的5个值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">writing-mode: horizontal-tb;</div><div class="line">writing-mode: vertical-rl;</div><div class="line">writing-mode: vertical-lr;</div><div class="line">writing-mode: sideways-rl;</div><div class="line">writing-mode: sideways-lr;</div></pre></td></tr></table></figure>
+<p><a href="https://drafts.csswg.org/css-writing-modes/" target="_blank" rel="external">css 书写规范</a>支持了一个很宽范围的书写语言。这很复杂，但是全球的书写语言的演变确是很简单的。</p>
+<p>首先我会介绍一下现有的书写系统的基本布局方式。然后再看看上面这些属性做了什么：</p>
+<h1 id="行方向，块方向，字符方向"><a href="#行方向，块方向，字符方向" class="headerlink" title="行方向，块方向，字符方向"></a>行方向，块方向，字符方向</h1><p>在web的世界里有‘block’ 和 ‘inline’两种布局方式，如果你曾经写过<code>display: block</code>和<code>display: inline</code>,那么你已经了解了这方面的知识。</p>
+<p>block在垂直方向是默认从上往下排列的。</p>
+<p><img src="http://ggbond.qiniudn.com/2017-02-19%2009:54:12.png" alt=""></p>
+<p>Inline是按照每一行的方式排列的。在水平方向的默认方式是从左到右，想象一下你正在读的这段文字，是用一个打字机一个个字符打出来的，这就是inline的方向。</p>
+<p><img src="http://ggbond.qiniudn.com/2017-02-19%2009:54:39.png" alt=""></p>
+<p>而字符的方向是字符点的方向，如果你输入一个大写字母“A”，哪一边才是字符的顶部呢？不同的语言有不同的方向。大多数语言是指向页面的顶部，但是不是所有的语言都这样</p>
+<p><img src="http://ggbond.qiniudn.com/2017-02-19%2009:55:09.png" alt=""></p>
+<p>综合起来看</p>
+<p><img src="http://ggbond.qiniudn.com/2017-02-19%2009:55:39.png" alt=""></p>
+<blockquote>
+<p>默认的样式看起来像这样</p>
+</blockquote>
+<p>现在我们知道了block, inline, 和 character的不同，来看看在不同的书面语言系统里是怎么样的</p>
+<h1 id="CSS-Writing-Mode的四种书写系统"><a href="#CSS-Writing-Mode的四种书写系统" class="headerlink" title="CSS Writing Mode的四种书写系统"></a>CSS Writing Mode的四种书写系统</h1><p>css规范包含了主要的四种书写系统：拉丁语系，阿拉伯语系，汉语和蒙古语</p>
+<h2 id="拉丁语系"><a href="#拉丁语系" class="headerlink" title="拉丁语系"></a>拉丁语系</h2><p>拉丁语系覆盖了时间70%的人口</p>
+<p><img src="http://ggbond.qiniudn.com/2017-02-19%2009:57:59.png" alt=""></p>
+<p>文本是水平的，从左到右，块方向是从上到下的。</p>
+<p>之所以叫拉丁语系，是它包含了所有使用拉丁字母的语言，包括英语，西班牙语，德语，法语还有许多其他的语言。另外还有一些不使用拉丁字母的语言也属于这个语系，比如希腊，西里尔字母（俄罗斯，乌克兰，保加利亚，塞尔维亚等等），还有Brahmic（梵文，泰文，藏文）等等。</p>
+<p>css默认是拉丁语系。<br>然而最佳实践是在<code>&lt;html&gt;</code>标签里指定语言和书写方向，那本文举例，<code>&lt;html lang=&#39;en-gb&#39; dir=&#39;ltr&#39;&gt;</code>告诉浏览器本网站是用英式英语出版，从左到右书写。</p>
+<h2 id="阿拉伯语系"><a href="#阿拉伯语系" class="headerlink" title="阿拉伯语系"></a>阿拉伯语系</h2><p>阿拉伯，希伯来和其他一些语言的行是从右到左的，也就是所谓的RTL。<br>注意：行的方向依然是水平的，而快的方向是从上到下，字符是竖直方向的。</p>
+<p><img src="http://ggbond.qiniudn.com/arabicsystem.jpg" alt=""></p>
+<p>不仅仅是文本是从右到左，网站上所有的元素都是如此。右上角是起始位置，重要的东西在右边。眼睛是从右往左读。所以典型的RTL网站的布局和LTR是一样的，只不过是水平方向反过来了。</p>
+<p><img src="http://ggbond.qiniudn.com/UNenar.jpg" alt=""></p>
+<p>对于大多数web开发者来说，我们的国际化的经验主要是支持阿拉伯和希伯来语。</p>
+<p>css通过提供对LTR的hack来支持国际化和RTL，所以开发者不得不写一堆的hack。举个栗子：Drupal社区提出了一个公约：给每一个margin-left或者-right，每一个padding-left 或者 -right，每一个float: left 或者 float: right添加注释<code>/* LTR */</code>,后面的开发者可以搜索每一个注释，然后把每一个left改成right,反之亦然。这是如此的单调而且容易出错。css本身需要更好的方式来支持开发者只写一次布局的代码，然后方便的切换不同的布局方向。</p>
+<p>新版的css布局就是这样做的。Flexbox，Grid还有对齐用的是开始和结束而不是左和右。这样的话要切换就很容易（相当于和左右解耦了）。只要写<code>justify-content: flex-start</code>,<code>justify-items: end</code>甚至是<code>margin-inline-start: 1rem</code>也能正常工作而不需要修改任何代码</p>
+<p>这种方式就好多了。虽然用开始和结束来代替左右会让人困惑，但是这对多语言的项目是很友好的。</p>
+<p>怎么样声明书写方向呢？不要在css里写而是在html里写，这样即使css没有加载，浏览器也知道该怎么布局页面</p>
+<p>比较明智的做法是在html跟元素，还需要声明你的语言。就像上面提到的一样，本文用的是<code>&lt;html lang=&#39;en-gb&#39; dir=&#39;ltr&#39;&gt;</code>。在阿拉伯联合王国，需要用<code>&lt;html lang=&#39;ar&#39; dir=&#39;rtl&#39;&gt;</code></p>
+<p>如果需要支持混合语言的，那就比较复杂了，但是本文不打算深入介绍。这篇文章的主要目的是介绍css和布局，而不是国际化</p>
+<p>在拉丁语系和阿拉伯语系里，不过是从左到右还是从右到左都使用一个css属性：<code>writing-mode: horizontal-tb</code>。因为在这两个语系里行的方向都是水平的，块的方向都是从上到下：</p>
+<p>horizontal-tb是浏览器的默认方式，所以不需要特别指定，除非你需要用其他的方式来覆盖，你可以认为浏览器内置了下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">html &#123;</div><div class="line">  writing-mode: horizontal-tb;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面我们看看垂直语系：</p>
+<h2 id="Han-based-语系"><a href="#Han-based-语系" class="headerlink" title="Han-based 语系"></a>Han-based 语系</h2><p>事情开始变得有趣起来了。<br>Han-based书写系统包括CJK语言，即中文，日文，韩文还其他的。布局页面的时候有两种方式，有时两种一起用。</p>
+<p>大多数CJL的文字和拉丁语系的一样，都是水平从上到下，行是从左到右。这是从20世纪开始的现代化方式。然后再计算机和web领域得到推广</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">section &#123;</div><div class="line">  writing-mode: horizontal-tb;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你也知道，什么也写的话就能得到默认值。</p>
+<p>另外一种Han-based的语言可以在垂直方向布局。inline是垂直的。而block是从右到左的。</p>
+<p><img src="http://ggbond.qiniudn.com/hansystem.jpg" alt=""></p>
+<p>注意到水平方向的文字是从左到右的，而垂直方向的文字是从右到左的。<br>这个日本的时尚杂志使用了混合的书写模式，封面是从左边打开，和英文的杂志正好相反</p>
+<p><img src="http://ggbond.qiniudn.com/voguejpcover.jpg" alt=""></p>
+<p><img src="http://ggbond.qiniudn.com/voguejppage.jpg" alt=""></p>
+<p>你也可以单独设置每一个元素的书写模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">div.articletext &#123;</div><div class="line">  writing-mode: vertical-rl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也可以改变页面的垂直方向的默认布局，然后设置某个元素为horizontal-tb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">html &#123; </div><div class="line">  writing-mode: vertical-rl;</div><div class="line">&#125;</div><div class="line">h2, .photocaptions, section &#123;</div><div class="line">  writing-mode: horizontal-tb;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你的页面有滚动条，那么书写模式决定了是把左上角作为七点，滚动到右边（如果我们用了horizontal-tb）还是把右上角作为其他，滚动到左边。这里有个例子<img src="https://www.chenhuijing.com/zh-type/" alt="CSS Writing Mode demo by Chen Hui Jing">，你可以切换水平和垂直的书写模式，然后看看有什么区别</p>
+<p><img src="http://ggbond.qiniudn.com/chenhuijingdemo.jpg" alt=""></p>
+<h2 id="蒙古语系"><a href="#蒙古语系" class="headerlink" title="蒙古语系"></a>蒙古语系</h2><p>蒙古语也是垂直的语系。文本垂直排练。像Han-based语系一样。但是有两个不同的地方：第一，block的布局是从左到右的。下面这幅图展示了蒙古语的维基百科长什么样：</p>
+<p><img src="http://ggbond.qiniudn.com/mongolianwikipedia.jpg" alt=""></p>
+<p>你也许会想，这看上去也不是很奇怪。把你的头向左倾斜，这就很熟悉了。block从屏幕的左边开始往右。inline从页面的顶部开始往下（和RTL很像，只不过是逆时针旋转了90°）。但是还有另外一个很大的不同。字符的方向是上下颠倒的。蒙古语字符的顶部不是指向左边，而是指向block块的方向。指向右边：</p>
+<p><img src="http://ggbond.qiniudn.com/mongoliansystem.jpg" alt=""><br>现在你也许会想忽略这些细节。大概你也不好直接去写蒙古文。但是我告诉你这为什么很重要–蒙古语定义了书写模式：vertical-lr，也就意味着我们不能用vertical-lr按照我们期望的方式来写其他的语言：</p>
+<p>我们想象一下vertical-rl和vertical-lr的工作方式，大概像下面这样：</p>
+<p><img src="http://ggbond.qiniudn.com/verticalexpected.png" alt=""></p>
+<p>但是这是错误的。实际上是像下面这样：</p>
+<p><img src="http://ggbond.qiniudn.com/verticalactual.png" alt=""></p>
+<p>是不是和想象的不一样。<code>writing-mode: vertical-rl</code>和<code>writing-mode: vertical-lr</code>都是顺时针旋转的，并不是逆时针。</p>
+<p>如果你在写蒙古文，你可以用下面的css来应用Han-based的书写模式。对整个的html或者指定的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">section &#123;</div><div class="line">  writing-mode: vertical-lr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你想在设计图形界面的时候不用水平方向的书写模式，我不觉得<code>writing-mode: vertical-lr</code>有用，当文本有两行的时候，他的布局方式是不可控的，我用的较多的是<code>writing-mode: vertical-rl</code>而不是<code>-lr</code></p>
+<h1 id="图形设计的书写模式"><a href="#图形设计的书写模式" class="headerlink" title="图形设计的书写模式"></a>图形设计的书写模式</h1><p>我们如何把英语的H标签变成竖着的呢？可以用 <code>transform: rotate()</code></p>
+<p>这里有两个例子，每个例子一个方向（这些例子都用CSS Gri做布局，所以需要使用支持这个属性的浏览器来测试，比如Firefox Nightly或者chrome）。</p>
+<p><img src="http://ggbond.qiniudn.com/wm4A.jpg" alt=""></p>
+<p>在 <a href="http://labs.jensimmons.com/workshop/writingmode-4A.html" target="_blank" rel="external">this demo 4A</a>, 文本顺时针旋转:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  writing-mode: vertical-rl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ggbond.qiniudn.com/wm4B.jpg" alt=""></p>
+<p>在这个例子里，文本逆时针旋转:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  writing-mode: vertical-rl;</div><div class="line">  transform: rotate(180deg);</div><div class="line">  text-align: right;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我用vertical-rl来旋转文本，然后旋转180°，再用<code>text-align: right</code>让文字跑到页面的顶部。这是一种hack的做法，但是有用。</p>
+<p>现在可以直接用CSS属性来实现:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  writing-mode: sideways-rl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另一个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">h1 &#123;</div><div class="line">  writing-mode: sideways-lr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>唯一的问题是只要Firefox浏览器支持这两个属性，其他浏览器都识别不了sideways-*，这就意味着我们还不能使用它。</p>
+<p>正常来说，writing-mode的<a href="http://caniuse.com/#feat=css-writing-mode" target="_blank" rel="external">浏览器兼容性</a>没问题。所以我用了<code>writing-mode: vertical-rl</code>和<code>transform: rotate(180deg)</code>来hack.</p>
+<p>如果你还想做其他的尝试，可以加上<code>text-orientation: upright</code>试试看，</p>
+<p><img src="http://ggbond.qiniudn.com/wm4C.jpg" alt=""></p>
+<p>在<a href="http://labs.jensimmons.com/workshop/writingmode-4C.html" target="_blank" rel="external"> demo 4C</a>里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  writing-mode: vertical-rl;</div><div class="line">  text-orientation: upright;</div><div class="line">  text-transform: uppercase;</div><div class="line">  letter-spacing: -25px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以去看看我所有的Writing Modes的demo<a href="http://labs.jensimmons.com/#writing-modes" target="_blank" rel="external">http://labs.jensimmons.com/#writing-modes</a></p>
+<p>剩下两个Demo在这里：</p>
+<iframe id="cp_embed_dNExjm" src="//codepen.io/lixuejiang/embed/dNExjm?height=300&theme-id=1&slug-hash=dNExjm&default-tab=result" scrolling="no" frameborder="no" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/20/js-css奇技淫巧收集/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js&amp;css奇技淫巧收集</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CSS-Writing-Mode" data-title="CSS Writing Mode" data-url="http://www.lixuejiang.me/2017/01/25/CSS-Writing-Mode/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>
