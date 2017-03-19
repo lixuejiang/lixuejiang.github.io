@@ -12,6 +12,7 @@ tags: [读书笔记]
 |FF|Gecko|
 |safari,chrome,Android浏览器|webkit|
 
+<!--more-->
 
 渲染引擎模块及其依赖的模块
 ![http://ggbond.qiniudn.com/yilai.png](http://ggbond.qiniudn.com/yilai.png)
