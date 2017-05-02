@@ -4,6 +4,7 @@ date: 2017-03-18 16:00:35
 tags: [python]
 ---
 
+人生苦短，我用Python
 自从入坑Python以来，发现Python的灵活和强大，简直就是瑞士军刀，想要的功能都有对应的实现。在此记录这两个月以来学习的历程，还有踩过的坑。先来首Python之歌：
 
 ```
@@ -53,6 +54,7 @@ Python之禅 by Tim Peters
 做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
 如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
 命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
+
 ```
 
 ## 开发环境搭建
@@ -92,7 +94,7 @@ Python之禅 by Tim Peters
 
 ### 包管理工具
 
-- easy_install 
+- easy_install
 - [pip](http://blog.csdn.net/olanlanxiari/article/details/48086917)
 
 
@@ -108,7 +110,37 @@ Python之禅 by Tim Peters
 - [ipython](http://ipython.org/)
 - [bpython](https://bpython-interpreter.org/)
 
-## Django 
+### 基本语法
+
+#### 数据类型
+
+- 可变
+    + dict
+    + object
+    + array
+    + ==
+- 不可变
+    + number
+    + string
+    + truple
+
+#### 数学运算
+
+#### 逻辑运算
+
+
+#### 内置方法
+
+#### 内置模块
+
+
+
+### 其他资源
+
+- [一些技巧](http://blog.jobbole.com/32748/)
+- [听说你会Python](http://python.jobbole.com/86869/?utm_source=blog.jobbole.com&utm_medium=relatedPosts)
+
+## Django
 ### 搭建
 
 ### Django app,model,url,admin
@@ -116,5 +148,7 @@ Python之禅 by Tim Peters
 ### django 自定义命令
 
 ## sqlalchemy
+
+### sqlalchemy映射Django model
 
 ## pyexcel

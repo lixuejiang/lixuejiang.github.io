@@ -25,7 +25,13 @@ tags: [读书笔记]
 
 # 3.webkit架构和模块
 # 4.资源加载和网络栈
+
+![spdy](http://ggbond.qiniudn.com/2017-05-01%2009:37:11.png)
+![](http://ggbond.qiniudn.com/2017-05-01%2009:37:56.png)
+![](http://ggbond.qiniudn.com/2017-05-01%2009:38:22.png)
 # 5.HTML解释器和DOM模型
+
+![时序图](http://ggbond.qiniudn.com/2017-05-01%2009:52:31.png)
 # 6.css解释器和样式布局
 # 7.渲染基础
 # 8.硬件加速机制
