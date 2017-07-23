@@ -6,7 +6,7 @@ tags: [翻译,DOM]
 
 对Virtual DOM这个名词并不陌生，但是有什么深入的理解谈不上。看到medium上rajaraodv写的[The Inner Workings Of Virtual DOM](https://medium.com/@rajaraodv/the-inner-workings-of-virtual-dom-666ee7ad47cf#.o9t0ifnaf)这篇文章，比较深入的介绍了Virtual DOM的各个方面，在此翻译一下。
 
-这篇文章比较简单，在翻译的过程中都不需要google翻译，但是图片比较多。
+这篇文章比较简单，但是图片比较多。
 
 <!--more-->
 
@@ -14,7 +14,7 @@ tags: [翻译,DOM]
 
 Virtual DOM (VDOM 也叫 VNode) 很魔幻 ✨，但是也很复杂以至于让人难以理解😱。像React，Preact这些js的库都用到了Virtual DOM。不幸的是，我没有找到任何一篇深入浅出的解释VDOM文章或者文档，所以我决定自己写一篇。
 
-> 注意：这篇文章很长，为了更通俗易懂，我加了很多图片，同时也使这也是这篇文章很长。
+> 注意：这篇文章很长，为了更通俗易懂，我加了很多图片，同时这也使这篇文章很长。
 
 >  我用了Preact的代码，希望将来你很容易看懂，但是我觉得大多数情况下也适用于React。我希望读到这篇文章的人能更好的理解React和Preact，也为他们的发展做出一点贡献
 
