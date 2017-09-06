@@ -30,7 +30,7 @@ PKCS12证书也可以用来包含私钥，但是需要一个秘密来打开它�
 # HTTPS
 HTTPS(HTTP+SSL)是为互联网的信息安全传输而设计的
 ## 1.如何安全的交流
-如何安全的交流，加密是第一步。我加密我的数据，然后把数据和秘钥发送给服务器，然后服务器就可以利用发送的key解密我发生的数据。
+如何安全的交流，加密是第一步。我加密我的数据，然后把数据和秘钥发送给服务器，然后服务器就可以利用发送的key解密我发送的数据。
 ![http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&w=840&ssl=1](http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&w=840&ssl=1)
 现在我们来看一下可能的场景：黑客监听了这次会话，也就意味着获取到了加密后的数据和秘钥，那么要解密就不是件困难的事情。显而易见，信息泄露了。
 
