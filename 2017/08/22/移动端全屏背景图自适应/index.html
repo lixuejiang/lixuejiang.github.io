@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>移动端全屏背景图自适应&amp;&amp;翻书效果 | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+<meta name="keywords" content="移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端全屏背景图自适应&amp;&amp;翻书效果">
+<meta property="og:url" content="http://www.lixuejiang.me/2017/08/22/移动端全屏背景图自适应/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+<meta property="og:image" content="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif">
+<meta property="og:image" content="http://ggbond.qiniudn.com/2017-08-22%2014:41:37.png">
+<meta property="og:updated_time" content="2017-09-17T11:58:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端全屏背景图自适应&amp;&amp;翻书效果">
+<meta name="twitter:description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+<meta name="twitter:image" content="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-移动端全屏背景图自适应" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/22/移动端全屏背景图自适应/" class="article-date">
+  	<time datetime="2017-08-22T06:15:31.000Z" itemprop="datePublished">2017-08-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动端全屏背景图自适应&amp;&amp;翻书效果
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif" alt="翻书"><br>最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器<a href="http://www.turnjs.com/" target="_blank" rel="external">turnjs4</a>,并参考<a href="https://github.com/pengqiuyuan/h5-turnjs" target="_blank" rel="external">h5-turnjs</a>实现了需要的效果。</p>
+<a id="more"></a>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
+<li>我们最终是展示在app的webview里，视图有64px的header，比纯图片的高度小64px,而设计师在作图的时候并没有考虑到这一点，所以当我们<code>background-size:100%</code>来缩放图片的时候，图片的下半部分会被盖住（设计师按照750x1334)的比例来做的图。</li>
+<li>当发现存在这种情况的时候，并没有认真思考问题的原因，让高度也变成了100%(<code>background-size:100% 100%</code>)，所以图片相对于原图就会出现被压扁的情况</li>
+</ul>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>设计师修改图片，高度去掉64px,@2x的去掉128px</li>
+<li>背景图片改为(<code>background-size:cover</code>)</li>
+</ul>
+<h2 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h2><ul>
+<li>根据<a href="http://compass.umeng.com/#/equipment?_k=sb5r2l" target="_blank" rel="external">友盟</a>提供的分辨率指数来看，市场上占有率前10名的Android手机的纵横比都比小于1334/750，所以在这些手机上不会出现留白的情况，但是可能会出现图片底部被盖住的情况，所有需要设计师在设计图片的时候底部尽量多留一部分空白</li>
+</ul>
+<h2 id="各种分辨率手机屏幕纵横比"><a href="#各种分辨率手机屏幕纵横比" class="headerlink" title="各种分辨率手机屏幕纵横比"></a>各种分辨率手机屏幕纵横比</h2><p><img src="http://ggbond.qiniudn.com/2017-08-22%2014:41:37.png" alt="纵横比"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    <div style="width:800px;margin:30px;">
+      <div>您的鼓励是我最大的动力！！</div>
+      <img src="http://ggbond.qiniudn.com/weixinpainew.png" alt="" style="width: 300px">
+      <img src="http://ggbond.qiniudn.com/alipaynew.png" alt="" style="width: 300px">
+    </div>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/09/给create-react-app创建的项目添加react-hot-loader/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">给create-react-app创建的项目添加react hot loader</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="移动端全屏背景图自适应" data-title="移动端全屏背景图自适应&amp;&amp;翻书效果" data-url="http://www.lixuejiang.me/2017/08/22/移动端全屏背景图自适应/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

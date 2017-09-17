@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
+  <title>给create-react-app创建的项目添加react hot loader | 风君子的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="create-react-app创建的项目自带了live reloading，但是每次更新的时候是刷新整个页面，而不是只更新修改过的部分，导致在涉及到状态比较复杂的页面在开发的时候不是很方便。所以参考http://joshbroton.com/add-react-hot-reloading-create-react-app/，添加hot loader，提高开发效率。官网具体步骤如下：">
+<meta name="keywords" content="react,工程化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给create-react-app创建的项目添加react hot loader">
+<meta property="og:url" content="http://www.lixuejiang.me/2017/08/09/给create-react-app创建的项目添加react-hot-loader/index.html">
+<meta property="og:site_name" content="风君子的博客">
+<meta property="og:description" content="create-react-app创建的项目自带了live reloading，但是每次更新的时候是刷新整个页面，而不是只更新修改过的部分，导致在涉及到状态比较复杂的页面在开发的时候不是很方便。所以参考http://joshbroton.com/add-react-hot-reloading-create-react-app/，添加hot loader，提高开发效率。官网具体步骤如下：">
+<meta property="og:updated_time" content="2017-09-17T11:58:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给create-react-app创建的项目添加react hot loader">
+<meta name="twitter:description" content="create-react-app创建的项目自带了live reloading，但是每次更新的时候是刷新整个页面，而不是只更新修改过的部分，导致在涉及到状态比较复杂的页面在开发的时候不是很方便。所以参考http://joshbroton.com/add-react-hot-reloading-create-react-app/，添加hot loader，提高开发效率。官网具体步骤如下：">
+  
+    <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script type='text/javascript'>
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', 'a99ca5e3ec989867']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    
+    _st('install','6xA7qjTvVsCCsqdVuDs6','2.0.0');
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar show">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">风君子</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.tboox.org/">tboox</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cllgeek.com/">cllgeek</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://fangyi.me/">fangyi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://greenmzc.github.io/">茅哥</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.excaliburhan.com/">小平</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">金诚前端开发工程师</div>
+				</section>
+				
+			</div>
+
+		</div>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">风君子</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="http://ggbond.qiniudn.com/%E9%A3%8E.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">风君子</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lixuejiang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005051991745641" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-xue-jiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-给create-react-app创建的项目添加react-hot-loader" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/09/给create-react-app创建的项目添加react-hot-loader/" class="article-date">
+  	<time datetime="2017-08-09T03:41:16.000Z" itemprop="datePublished">2017-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给create-react-app创建的项目添加react hot loader
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>create-react-app创建的项目自带了live reloading，但是每次更新的时候是刷新整个页面，而不是只更新修改过的部分，导致在涉及到状态比较复杂的页面在开发的时候不是很方便。所以参考<a href="http://joshbroton.com/add-react-hot-reloading-create-react-app/" target="_blank" rel="external">http://joshbroton.com/add-react-hot-reloading-create-react-app/</a>，添加hot loader，提高开发效率。<a href="http://gaearon.github.io/react-hot-loader/getstarted/" target="_blank" rel="external">官网</a>具体步骤如下：</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="1-安装create-react-app"><a href="#1-安装create-react-app" class="headerlink" title="1.安装create-react-app"></a>1.安装create-react-app</h2><p><code>npm install -g create-react-app</code></p>
+<h2 id="2-创建项目"><a href="#2-创建项目" class="headerlink" title="2.创建项目"></a>2.创建项目</h2><p><code>create-react-app my-app</code></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="1-弹出配置文件"><a href="#1-弹出配置文件" class="headerlink" title="1.弹出配置文件"></a>1.弹出配置文件</h2><p><code>npm run eject</code></p>
+<h2 id="2-安装React-Hot-Loader"><a href="#2-安装React-Hot-Loader" class="headerlink" title="2.安装React Hot Loader"></a>2.安装React Hot Loader</h2><p><code>npm install --save-dev react-hot-loader@next</code></p>
+<h2 id="3-添加babel插件"><a href="#3-添加babel插件" class="headerlink" title="3.添加babel插件"></a>3.添加babel插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&quot;plugins&quot;: [</div><div class="line">    &quot;react-hot-loader/babel&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>最终package.json里的babel配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&quot;babel&quot;: &#123;</div><div class="line">  &quot;presets&quot;: [</div><div class="line">    &quot;react-app&quot;,</div><div class="line">    &quot;stage-1&quot;</div><div class="line">  ],</div><div class="line">  &quot;plugins&quot;: [</div><div class="line">    &quot;react-hot-loader/babel&quot;</div><div class="line">  ]</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<h2 id="4-webpack-config-dev-js-添加如下入口"><a href="#4-webpack-config-dev-js-添加如下入口" class="headerlink" title="4. webpack.config.dev.js 添加如下入口"></a>4. webpack.config.dev.js 添加如下入口</h2><p><code>&#39;react-hot-loader/patch&#39;</code></p>
+<h2 id="5-修改index-js入口文件"><a href="#5-修改index-js入口文件" class="headerlink" title="5. 修改index.js入口文件"></a>5. 修改index.js入口文件</h2><ul>
+<li><p>引入AppContainer<br><code>import {AppContainer} from &#39;react-hot-loader&#39;;</code></p>
+</li>
+<li><p>修改默认render函数</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">const rootEl = document.getElementById(&apos;root&apos;);</div><div class="line"> </div><div class="line">ReactDOM.render(</div><div class="line">    &lt;AppContainer&gt;</div><div class="line">        &lt;App /&gt;</div><div class="line">    &lt;/AppContainer&gt;,</div><div class="line">  rootEl</div><div class="line">);</div></pre></td></tr></table></figure>
+<ul>
+<li>处理变更</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">if (module.hot) &#123;</div><div class="line">    module.hot.accept(&apos;./App&apos;, () =&gt; &#123;</div><div class="line">        const NextApp = require(&apos;./App&apos;).default; // eslint-disable-line global-require</div><div class="line">        ReactDOM.render(</div><div class="line">            &lt;AppContainer&gt;</div><div class="line">                &lt;NextApp /&gt;</div><div class="line">            &lt;/AppContainer&gt;,</div><div class="line">            rootEl</div><div class="line">        );</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h1><ul>
+<li><a href="https://www.npmjs.com/package/create-react-app-hot-loader" target="_blank" rel="external">create-react-app-hot-loader</a></li>
+</ul>
+<h1 id="参考项目"><a href="#参考项目" class="headerlink" title="参考项目"></a>参考项目</h1><ul>
+<li><a href="https://github.com/gaearon/react-hot-boilerplate" target="_blank" rel="external">react-hot-boilerplate</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    <div style="width:800px;margin:30px;">
+      <div>您的鼓励是我最大的动力！！</div>
+      <img src="http://ggbond.qiniudn.com/weixinpainew.png" alt="" style="width: 300px">
+      <img src="http://ggbond.qiniudn.com/alipaynew.png" alt="" style="width: 300px">
+    </div>
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/22/移动端全屏背景图自适应/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          移动端全屏背景图自适应&amp;&amp;翻书效果
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/18/一个前端工程师的Python历险记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一个前端工程师的Python历险记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="给create-react-app创建的项目添加react-hot-loader" data-title="给create-react-app创建的项目添加react hot loader" data-url="http://www.lixuejiang.me/2017/08/09/给create-react-app创建的项目添加react-hot-loader/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<link rel="stylesheet" href="/css/duoshuo-ua.css">
+
+	<!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
+	两者顺序可以交换-->
+	<script src="/js/duoshuo-ua.js"></script>
+	<script>var duoshuoQuery={short_name:"xuejiangli",myIds:[9960671]};</script>
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuejiangli"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 风君子
+    	</div>
+      	<div class="footer-right">
+			本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: ''
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:30px;cursor: pointer;z-index:5;">
+	<a title="返回顶部"><img src="http://ggbond.qiniudn.com/5-120601155S7.gif"/></a>
+</div>
+<script src="/js/totop.js"></script>
+    <a href="https://github.com/lixuejiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  </div>
+</body>
+</html>

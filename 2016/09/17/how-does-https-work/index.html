@@ -7,21 +7,19 @@
   <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
   <title>https原理浅析 | 风君子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文how-does-https-work
-HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
+  <meta name="description" content="原文how-does-https-work HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
+<meta name="keywords" content="翻译,https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="https原理浅析">
 <meta property="og:url" content="http://www.lixuejiang.me/2016/09/17/how-does-https-work/index.html">
 <meta property="og:site_name" content="风君子的博客">
-<meta property="og:description" content="原文how-does-https-work
-HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
+<meta property="og:description" content="原文how-does-https-work HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
 <meta property="og:image" content="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&w=840&ssl=1">
 <meta property="og:image" content="http://i0.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_02.jpg?zoom=2&w=840&ssl=1">
-<meta property="og:updated_time" content="2017-01-02T02:11:10.000Z">
+<meta property="og:updated_time" content="2017-09-17T11:58:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https原理浅析">
-<meta name="twitter:description" content="原文how-does-https-work
-HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
+<meta name="twitter:description" content="原文how-does-https-work HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。">
 <meta name="twitter:image" content="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&w=840&ssl=1">
   
     <link rel="alternative" href="/atom.xml" title="风君子的博客" type="application/atom+xml">
@@ -108,7 +106,7 @@ HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -145,7 +143,7 @@ HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -279,7 +277,7 @@ HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人
 </ul>
 </blockquote>
 <h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTPS(HTTP+SSL)是为互联网的信息安全传输而设计的</p>
-<h2 id="1-如何安全的交流"><a href="#1-如何安全的交流" class="headerlink" title="1.如何安全的交流"></a>1.如何安全的交流</h2><p>如何安全的交流，加密是第一步。我加密我的数据，然后把数据和秘钥发送给服务器，然后服务器就可以利用发送的key解密我发生的数据。<br><img src="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&amp;w=840&amp;ssl=1" alt="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&amp;w=840&amp;ssl=1"><br>现在我们来看一下可能的场景：黑客监听了这次会话，也就意味着获取到了加密后的数据和秘钥，那么要解密就不是件困难的事情。显而易见，信息泄露了。</p>
+<h2 id="1-如何安全的交流"><a href="#1-如何安全的交流" class="headerlink" title="1.如何安全的交流"></a>1.如何安全的交流</h2><p>如何安全的交流，加密是第一步。我加密我的数据，然后把数据和秘钥发送给服务器，然后服务器就可以利用发送的key解密我发送的数据。<br><img src="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&amp;w=840&amp;ssl=1" alt="http://i2.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_01.jpg?zoom=2&amp;w=840&amp;ssl=1"><br>现在我们来看一下可能的场景：黑客监听了这次会话，也就意味着获取到了加密后的数据和秘钥，那么要解密就不是件困难的事情。显而易见，信息泄露了。</p>
 <h2 id="2-不对称加密"><a href="#2-不对称加密" class="headerlink" title="2.不对称加密"></a>2.不对称加密</h2><p>上一种解决方案根本不安全，所以继续，如果用不对称加密会怎么样。<br>这是个好主意。服务器给你它的公钥，你用公钥来加密数据。因为只有服务器有私钥，所以只有服务器能解密。即使黑客窃取了会话，也没办法解密。<br>但是，非对称加密比对称加密需要更多的时间来加密和解密数据。从用户体验的角度来看，使用非对称加密来传输整个信息不是最好的解决方案。</p>
 <h2 id="3-最终的模式"><a href="#3-最终的模式" class="headerlink" title="3.最终的模式"></a>3.最终的模式</h2><p>上面两种方式都行不通，那如果把他们合二为一呢？<br><img src="http://i0.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_02.jpg?zoom=2&amp;w=840&amp;ssl=1" alt="http://i0.wp.com/github.com/songzhw/songzhw.github.io/raw/master/imgs/20160113_02.jpg?zoom=2&amp;w=840&amp;ssl=1"><br>上图清晰的展示了https的过程<br>1.[服务器]生成秘钥对，包含一个公钥（“KeyPub”），一个私钥（“KeyPri”）。<br>2.[服务器]把“KeyPub”发送给客户端<br>3.[客户端]生成一个随机的秘钥（“key2”），然后用key2加密握手信息<br>4.[客户端]用公钥加密key2<br>5.[客户端]把加密后的握手信息和key2发送给服务端<br>6.[服务器]用“KeyPri”解密秘钥，得到key2<br>7.[服务器]用key2解密握手信息，建立连接</p>
 <h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>因为对称加密比非对称加密快，所以https用对称加密来加密需要传输的数据，用非对称加密来加密对称加密的秘钥来确保安全。用这种方法既保证了加密的速度也保证了传输的安全。<br>顺便说一句，深入理解https的原理是很重要的，你可以在现实生活中用这种思想来确保你自己的数据的安全性。</p>
@@ -290,6 +288,11 @@ HTTPS是如何工作的这篇文章来自我在团队内部的分享，许多人
   </div>
   
     <div style="margin:30px;">转载注明出处或者联系<a href="mailto:642898959@qq.com">作者</a></div>
+    <div style="width:800px;margin:30px;">
+      <div>您的鼓励是我最大的动力！！</div>
+      <img src="http://ggbond.qiniudn.com/weixinpainew.png" alt="" style="width: 300px">
+      <img src="http://ggbond.qiniudn.com/alipaynew.png" alt="" style="width: 300px">
+    </div>
     
 <nav id="article-nav">
   

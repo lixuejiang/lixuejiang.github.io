@@ -101,7 +101,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -138,7 +138,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 14px;">DOM</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 18px;">css</a> <a href="/tags/emmet/" style="font-size: 10px;">emmet</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/sessionStorage/" style="font-size: 10px;">sessionStorage</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/原创/" style="font-size: 10px;">原创</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/案例/" style="font-size: 10px;">案例</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/浏览器兼容性/" style="font-size: 10px;">浏览器兼容性</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/职业发展/" style="font-size: 10px;">职业发展</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -221,6 +221,141 @@
 
       <div class="body-wrap">
   
+    <article id="post-getElementsByTagName-for-document-fragments" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/26/getElementsByTagName-for-document-fragments/" class="article-date">
+  	<time datetime="2016-09-26T01:55:33.000Z" itemprop="datePublished">2016-09-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/26/getElementsByTagName-for-document-fragments/">getElementsByTagName for document fragments</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://dean.edwards.name/weblog/2009/12/getelementsbytagname/" target="_blank" rel="external">原文链接</a><br><a href="http://ejohn.org/blog/dom-documentfragments/" target="_blank" rel="external">document fragments</a>没有实现<a href="https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1938918D" target="_blank" rel="external">getElementsByTagName</a>方法，但是实现了其他的<a href="">选择器api</a>:<a href="https://www.w3.org/TR/selectors-api/#nodeselector" target="_blank" rel="external">querySelector/querySelectorAll</a>,除了那些写<a href="http://www.paulirish.com/2008/javascript-css-selector-engine-timeline/" target="_blank" rel="external">选择器引擎</a>的人，没人关心这个，如果你也是关心这个，那么请继续阅读。<br>在没有很多dom方法的情况下，我依然可以写我的代码，但是没有getElementsByTagName方法不行，所以我决定实现它。</p>
+<h1 id="关于性能"><a href="#关于性能" class="headerlink" title="关于性能"></a>关于性能</h1><p>JavaScript是一门很好的脚本语言，但是仍然是脚本语言。<br>要实现高性能的循环应该尽量避免下面的这些做法：</p>
+<ul>
+<li>1.try/catch块</li>
+<li>2.方法调用，即使是原生的方法</li>
+<li>3.获取dom属性（或者任何会调用复杂的getter/setter的方法）</li>
+</ul>
+<p>请注意这是一个有序列表！</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/09/26/getElementsByTagName-for-document-fragments/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-DOMinsertAdjacentHTML" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/25/DOMinsertAdjacentHTML/" class="article-date">
+  	<time datetime="2016-09-25T13:57:33.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/25/DOMinsertAdjacentHTML/">DOM insertAdjacentHTML</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://ejohn.org/blog/dom-insertadjacenthtml/" target="_blank" rel="external">原文</a><br>当我在寻找一个更好的往document里注入html fragments（我在<a href="http://ejohn.org/blog/dom-documentfragments/" target="_blank" rel="external">这篇</a>文章里提到过的）的方法的时候，我决定花点时间研究一下IE浏览器的<a href="https://msdn.microsoft.com/en-us/library/ms536452.aspx" target="_blank" rel="external">insertAdjacentHTML</a>方法。</p>
+<p>这个方法在IE4里就开始使用了，当前版的Opera也支持。它允许你往document的不同位置插入一段格式正确的html片段。位置如下：</p>
+<ul>
+<li>.insertAdjacentHTML(“beforeBegin”, …)    before</li>
+<li>.insertAdjacentHTML(“afterBegin”, …)    prepend</li>
+<li>.insertAdjacentHTML(“beforeEnd”, …)    append</li>
+<li>.insertAdjacentHTML(“afterEnd”, …)    after</li>
+</ul>
+<p>这个方法只对html元素生效，而且使用方便。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/09/25/DOMinsertAdjacentHTML/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-DOM是一个烂摊子" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -247,7 +382,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文翻译自<a href="http://www.slideshare.net/jeresig/the-dom-is-a-mess-yahoo">DOM is a mess</a>,主要讲了dom方法在不同的浏览器里存在的一些bug</p>
+        <p>本文翻译自<a href="http://www.slideshare.net/jeresig/the-dom-is-a-mess-yahoo" target="_blank" rel="external">DOM is a mess</a>,主要讲了dom方法在不同的浏览器里存在的一些bug</p>
 <h1 id="混乱的DOM"><a href="#混乱的DOM" class="headerlink" title="混乱的DOM"></a>混乱的DOM</h1><p>几乎每一个DOM方法在某个浏览器里都存在某种问题</p>
 <h2 id="一些老方法如："><a href="#一些老方法如：" class="headerlink" title="一些老方法如："></a>一些老方法如：</h2><h3 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById"></a>getElementById</h3><p>这似乎是最常用的dom方法，但是也有一些很奇怪的地方：</p>
 <ul>
@@ -401,12 +536,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>译自<a href="http://www.noupe.com/design/using-css-to-fix-anything-20-common-bugs-and-fixes.html">Using CSS to Fix Anything: 20+ Common Bugs and Fixes</a><br>毫无疑问，一个有逻辑和结构化的布局是最可行的。不仅仅是因为你的布局会在不同的浏览器之间变化，还因为css有很多种方式来定位一个元素。今天我们要分享一些技巧来避免创建css布局的陷阱。<br>这是这一序列文章的第一部分。外面有那么多的好的技巧，如果你发现有更简单或者更好的方法，请你在文章的末尾发表评论或者给我发邮件。我会尽我所能在这一系列的下一篇文章中包含进来。</p>
+        <p>译自<a href="http://www.noupe.com/design/using-css-to-fix-anything-20-common-bugs-and-fixes.html" target="_blank" rel="external">Using CSS to Fix Anything: 20+ Common Bugs and Fixes</a><br>毫无疑问，一个有逻辑和结构化的布局是最可行的。不仅仅是因为你的布局会在不同的浏览器之间变化，还因为css有很多种方式来定位一个元素。今天我们要分享一些技巧来避免创建css布局的陷阱。<br>这是这一序列文章的第一部分。外面有那么多的好的技巧，如果你发现有更简单或者更好的方法，请你在文章的末尾发表评论或者给我发邮件。我会尽我所能在这一系列的下一篇文章中包含进来。</p>
 <p><hr><br>你也许对该系列的其他文章感兴趣：</p>
 <ul>
-<li><a href="http://www.noupe.com/design/using-css-to-do-anything-50-creative-examples-and-tutorials.html">Using CSS to Do Anything: 50+ Creative Examples and Tutorials</a></li>
-<li><a href="http://www.noupe.com/design/101-css-techniques-of-all-time-part-1.html">101 CSS Techniques Of All Time- Part 1</a></li>
-<li><a href="http://www.noupe.com/design/101-css-techniques-of-all-time-part2.html">101 CSS Techniques Of All Time- Part 2</a></li>
+<li><a href="http://www.noupe.com/design/using-css-to-do-anything-50-creative-examples-and-tutorials.html" target="_blank" rel="external">Using CSS to Do Anything: 50+ Creative Examples and Tutorials</a></li>
+<li><a href="http://www.noupe.com/design/101-css-techniques-of-all-time-part-1.html" target="_blank" rel="external">101 CSS Techniques Of All Time- Part 1</a></li>
+<li><a href="http://www.noupe.com/design/101-css-techniques-of-all-time-part2.html" target="_blank" rel="external">101 CSS Techniques Of All Time- Part 2</a></li>
 </ul>
       
     </div>
@@ -467,7 +602,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原文<a href="http://www.songzhw.com/2016/09/13/how-does-https-work/">how-does-https-work</a></p>
+        <p>原文<a href="http://www.songzhw.com/2016/09/13/how-does-https-work/" target="_blank" rel="external">how-does-https-work</a></p>
 <h1 id="HTTPS是如何工作的"><a href="#HTTPS是如何工作的" class="headerlink" title="HTTPS是如何工作的"></a>HTTPS是如何工作的</h1><p>这篇文章来自我在团队内部的分享，许多人对https不是很了解，为什么https的代码是那样的？所以我想把我的观点分享到网上。<br>
       
     </div>
@@ -596,9 +731,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="react"><a href="#react" class="headerlink" title="react"></a>react</h1><p>根据<a href="http://lib.csdn.net/base/react/structure">http://lib.csdn.net/base/react/structure</a>整理，在学习过程中逐步完善</p>
+        <h1 id="react"><a href="#react" class="headerlink" title="react"></a>react</h1><p>根据<a href="http://lib.csdn.net/base/react/structure" target="_blank" rel="external">http://lib.csdn.net/base/react/structure</a>整理，在学习过程中逐步完善</p>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>一句话概括，在js里写xml</p>
-<h3 id="顶层API"><a href="#顶层API" class="headerlink" title="顶层API"></a>顶层API</h3><p>如果把React看做一个类的话，顶层API就是类方法。<br><a href="http://www.react-china.com/docs/top-level-api.html">http://www.react-china.com/docs/top-level-api.html</a></p>
+<h3 id="顶层API"><a href="#顶层API" class="headerlink" title="顶层API"></a>顶层API</h3><p>如果把React看做一个类的话，顶层API就是类方法。<br><a href="http://www.react-china.com/docs/top-level-api.html" target="_blank" rel="external">http://www.react-china.com/docs/top-level-api.html</a></p>
 <h3 id="From"><a href="#From" class="headerlink" title="From"></a>From</h3><p>需要注意受限组件</p>
 <h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3>
       
@@ -721,14 +856,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文是对<a href="http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html#table-of-contents">Full-Stack Redux Tutorial</a>这篇文章的翻译</p>
+        <p>本文是对<a href="http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html#table-of-contents" target="_blank" rel="external">Full-Stack Redux Tutorial</a>这篇文章的翻译</p>
 <p>Redux是当下发生在JavaScript领域最令人激动的事情之一。它通过以下优势在一堆的js的框架和库里脱颖而出：</p>
 <ul>
 <li>一个简单的，可以预测的状态模型</li>
 <li>注重函数式编程和不可变数据</li>
 <li>一个微小的API</li>
 </ul>
-<p>Redux是一个很小的库，要学习他的api并不困难，但是对于大多数人，纯函数式和不可变数据微小的构建块和自身的限制会让他们感到举步维艰，这到底是怎么实现的？<br>本教程讲引导你从头开始构建一个全栈的Redux和<a href="http://facebook.github.io/immutable-js/">Immutable-js</a>应用程序。应用测试驱动开发，我们将一步步构建一个对应真是世界的应用，Node+Redux的后端和React+Redux的前端<br>同时还会用到ES6, <a href="http://babeljs.io/">Babel</a> , <a href="http://socket.io/">Socket.IO</a> , <a href="http://webpack.github.io/">Webpack</a> 和 <a href="https://mochajs.org/">Mocha</a> .这是一个有趣的开发栈，可以加快你的开发速度。</p>
+<p>Redux是一个很小的库，要学习他的api并不困难，但是对于大多数人，纯函数式和不可变数据微小的构建块和自身的限制会让他们感到举步维艰，这到底是怎么实现的？<br>本教程讲引导你从头开始构建一个全栈的Redux和<a href="http://facebook.github.io/immutable-js/" target="_blank" rel="external">Immutable-js</a>应用程序。应用测试驱动开发，我们将一步步构建一个对应真是世界的应用，Node+Redux的后端和React+Redux的前端<br>同时还会用到ES6, <a href="http://babeljs.io/" target="_blank" rel="external">Babel</a> , <a href="http://socket.io/" target="_blank" rel="external">Socket.IO</a> , <a href="http://webpack.github.io/" target="_blank" rel="external">Webpack</a> 和 <a href="https://mochajs.org/" target="_blank" rel="external">Mocha</a> .这是一个有趣的开发栈，可以加快你的开发速度。</p>
       
     </div>
     
@@ -744,132 +879,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/08/25/Full-Stack-Redux-Tutorial/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-web开发修炼之道读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/20/web开发修炼之道读书笔记/" class="article-date">
-  	<time datetime="2016-08-20T04:48:43.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/20/web开发修炼之道读书笔记/">web开发修炼之道读书笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="团队合作"><a href="#团队合作" class="headerlink" title="团队合作"></a>团队合作</h2><h3 id="揭秘前端工程师"><a href="#揭秘前端工程师" class="headerlink" title="揭秘前端工程师"></a>揭秘前端工程师</h3><p>1.css是基本功<br>2.javascript，包括原生的和类库，框架<br>3.后端语言</p>
-<h3 id="欲精一行，必先通10行"><a href="#欲精一行，必先通10行" class="headerlink" title="欲精一行，必先通10行"></a>欲精一行，必先通10行</h3><h3 id="提高重用性"><a href="#提高重用性" class="headerlink" title="提高重用性"></a>提高重用性</h3><h3 id="冗余和精简的矛盾"><a href="#冗余和精简的矛盾" class="headerlink" title="冗余和精简的矛盾"></a>冗余和精简的矛盾</h3><h3 id="磨刀不误砍柴工"><a href="#磨刀不误砍柴工" class="headerlink" title="磨刀不误砍柴工"></a>磨刀不误砍柴工</h3><h3 id="制订规范"><a href="#制订规范" class="headerlink" title="制订规范"></a>制订规范</h3><h3 id="团队合作的最大难点"><a href="#团队合作的最大难点" class="headerlink" title="团队合作的最大难点"></a>团队合作的最大难点</h3><h2 id="高质量的HTML"><a href="#高质量的HTML" class="headerlink" title="高质量的HTML"></a>高质量的HTML</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/20/web开发修炼之道读书笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS权威指南读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/20/CSS权威指南读书笔记/" class="article-date">
-  	<time datetime="2015-08-20T04:24:53.000Z" itemprop="datePublished">2015-08-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/20/CSS权威指南读书笔记/">CSS权威指南读书笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CSS权威指南"><a href="#CSS权威指南" class="headerlink" title="CSS权威指南"></a>CSS权威指南</h1><h2 id="二、选择器"><a href="#二、选择器" class="headerlink" title="二、选择器"></a>二、选择器</h2><h2 id="三、结构和层叠"><a href="#三、结构和层叠" class="headerlink" title="三、结构和层叠"></a>三、结构和层叠</h2><h2 id="四、值和单位"><a href="#四、值和单位" class="headerlink" title="四、值和单位"></a>四、值和单位</h2><h2 id="五、字体"><a href="#五、字体" class="headerlink" title="五、字体"></a>五、字体</h2><h3 id="font-family"><a href="#font-family" class="headerlink" title="font-family"></a>font-family</h3><ul>
-<li>一个font-family下有很多字体，浏览器会根据用户安装的字体进行渲染</li>
-<li>可以指定多个font-family，在操作系统不支持第一个字体系列的情况下，使用第二个，以此类推</li>
-<li>如果font-family的名称是关键字或者含有特殊字符，需要用引号括起来</li>
-<li>不能把系统支持的非关键字的名称用引号括起来</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/20/CSS权威指南读书笔记/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
