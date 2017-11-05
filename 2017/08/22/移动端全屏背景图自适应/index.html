@@ -7,19 +7,19 @@
   <meta name="google-site-verification" content="M-1mI11XAlhv4V1duQd9whutIsulhvNLAi9CWNPiM0M" />
   <title>移动端全屏背景图自适应&amp;&amp;翻书效果 | 厦冰的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+  <meta name="description" content="最近项目中要实现类似下图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
 <meta name="keywords" content="移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端全屏背景图自适应&amp;&amp;翻书效果">
 <meta property="og:url" content="http://www.lixuejiang.me/2017/08/22/移动端全屏背景图自适应/index.html">
 <meta property="og:site_name" content="厦冰的博客">
-<meta property="og:description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+<meta property="og:description" content="最近项目中要实现类似下图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
 <meta property="og:image" content="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif">
 <meta property="og:image" content="http://ggbond.qiniudn.com/2017-08-22%2014:41:37.png">
-<meta property="og:updated_time" content="2017-09-17T11:58:22.000Z">
+<meta property="og:updated_time" content="2017-11-05T01:51:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端全屏背景图自适应&amp;&amp;翻书效果">
-<meta name="twitter:description" content="最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
+<meta name="twitter:description" content="最近项目中要实现类似下图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器turnjs4,并参考h5-turnjs实现了需要的效果。">
 <meta name="twitter:image" content="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif">
   
     <link rel="alternative" href="/atom.xml" title="厦冰的博客" type="application/atom+xml">
@@ -253,8 +253,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif" alt="翻书"><br>最近项目中要实现类似上图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器<a href="http://www.turnjs.com/" target="_blank" rel="external">turnjs4</a>,并参考<a href="https://github.com/pengqiuyuan/h5-turnjs" target="_blank" rel="external">h5-turnjs</a>实现了需要的效果。</p>
+        <p>最近项目中要实现类似下图的翻书效果，如果要自己写的比较麻烦，网上有很多css实现的翻书的效果，codepen也有很多酷炫的效果，但是都不支持鼠标交互，最终发现了神器<a href="http://www.turnjs.com/" target="_blank" rel="external">turnjs4</a>,并参考<a href="https://github.com/pengqiuyuan/h5-turnjs" target="_blank" rel="external">h5-turnjs</a>实现了需要的效果。</p>
 <a id="more"></a>
+<p><img src="http://ggbond.qiniudn.com/%E7%BF%BB%E4%B9%A6.gif" alt="翻书"></p>
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
 <li>我们最终是展示在app的webview里，视图有64px的header，比纯图片的高度小64px,而设计师在作图的时候并没有考虑到这一点，所以当我们<code>background-size:100%</code>来缩放图片的时候，图片的下半部分会被盖住（设计师按照750x1334)的比例来做的图。</li>
 <li>当发现存在这种情况的时候，并没有认真思考问题的原因，让高度也变成了100%(<code>background-size:100% 100%</code>)，所以图片相对于原图就会出现被压扁的情况</li>
@@ -282,6 +283,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/11/05/前端工程化小结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          前端工程化小结
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/08/09/给create-react-app创建的项目添加react-hot-loader/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">给create-react-app创建的项目添加react hot loader</div>
@@ -290,8 +300,7 @@
   
 </nav>
 
-  
-  <!-- 来必力City版安装代码 -->
+    <!-- 来必力City版安装代码 -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTM1OS83OTIy">
   <script type="text/javascript">
    (function(d, s) {
@@ -309,6 +318,7 @@
 <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
 </div>
 <!-- City版安装代码已完成 -->
+  
 </article>
 
 

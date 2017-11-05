@@ -15,8 +15,9 @@
 <meta property="og:site_name" content="厦冰的博客">
 <meta property="og:description" content="浏览器兼容性是一个很长久的话题，之所以前端需要面对浏览器兼容性，是因为用户的环境有不同的平台，不同的浏览器。不同的厂商之间为了相互竞争，对标准的实现不一样。不同的浏览器有不同的内核。即使同一个浏览器也有不同的版本，不同的版本对同一特性的支持情况也不尽相同。也可能某个浏览器的某个版本针对某个特性存在bug，而我们的产品又暂时不能放弃这个版本的用户，所以必须兼容。PC的情况是这样，移动端的情况更复杂，">
 <meta property="og:image" content="http://ggbond.qiniudn.com/box.png">
+<meta property="og:image" content="https://github.com/youngwind/blog/issues/27">
 <meta property="og:image" content="http://ggbond.qiniudn.com/request.png">
-<meta property="og:updated_time" content="2017-09-17T11:58:22.000Z">
+<meta property="og:updated_time" content="2017-11-05T01:28:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我理解的浏览器兼容性">
 <meta name="twitter:description" content="浏览器兼容性是一个很长久的话题，之所以前端需要面对浏览器兼容性，是因为用户的环境有不同的平台，不同的浏览器。不同的厂商之间为了相互竞争，对标准的实现不一样。不同的浏览器有不同的内核。即使同一个浏览器也有不同的版本，不同的版本对同一特性的支持情况也不尽相同。也可能某个浏览器的某个版本针对某个特性存在bug，而我们的产品又暂时不能放弃这个版本的用户，所以必须兼容。PC的情况是这样，移动端的情况更复杂，">
@@ -298,9 +299,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">if (!Array.prototype.indexOf)</div><div class="line">&#123;</div><div class="line">  Array.prototype.indexOf = function(elt /*, from*/)</div><div class="line">  &#123;</div><div class="line">    var len = this.length &gt;&gt;&gt; 0;</div><div class="line">    var from = Number(arguments[1]) || 0;</div><div class="line">    from = (from &lt; 0)</div><div class="line">         ? Math.ceil(from)</div><div class="line">         : Math.floor(from);</div><div class="line">    if (from &lt; 0)</div><div class="line">      from += len;</div><div class="line">    for (; from &lt; len; from++)</div><div class="line">    &#123;</div><div class="line">      if (from in this &amp;&amp;</div><div class="line">          this[from] === elt)</div><div class="line">        return from;</div><div class="line">    &#125;</div><div class="line">    return -1;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>new Date().getYear(),在FF里返回的年份是减去1900</li>
-<li>对象字面量最后一个属性之后不支持，如下代码，在IE8下会报错</li>
+<li>对象字面量最后一个属性之后不支持，如下代码，在IE6/7下会报错</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var obj = &#123;</div><div class="line">	name:&apos;ggbond&apos;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>数组末尾多余逗号在IE8下的解析会有问题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var ary = [1,2,3,]</div><div class="line"></div><div class="line">// IE 8</div><div class="line"></div><div class="line">var ary = [1,2,3,null]</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://github.com/youngwind/blog/issues/50" target="_blank" rel="external">来源</a></p>
+</blockquote>
+<ul>
+<li><img src="https://github.com/youngwind/blog/issues/27" alt="ie8上传文件后提示下载文件"></li>
+</ul>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="事件类"><a href="#事件类" class="headerlink" title="事件类"></a>事件类</h3><h4 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">addHandler：function(element,type,handler)&#123;</div><div class="line"> if(element.addEventListener)&#123;//检测是否为DOM2级方法</div><div class="line">  element.addEventListener(type, handler, false);</div><div class="line"> &#125;else if (element.attachEvent)&#123;//检测是否为IE级方法</div><div class="line">  element.attachEvent(&quot;on&quot; + type, handler);</div><div class="line"> &#125; else &#123;//检测是否为DOM0级方法</div><div class="line">  element[&quot;on&quot; + type] = handler;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="取消绑定"><a href="#取消绑定" class="headerlink" title="取消绑定"></a>取消绑定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">removeHandler：function(element, type, handler)&#123;</div><div class="line">  if (element.removeEventListener)&#123;</div><div class="line">   element.removeEventListener(type, handler, false);</div><div class="line">  &#125; else if (element.detachEvent)&#123;</div><div class="line">   element.detachEvent(&quot;on&quot; + type, handler);</div><div class="line">  &#125; else &#123;</div><div class="line">   element[&quot;on&quot; + type] = null;</div><div class="line">  &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <h4 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">getEvent: function(event)&#123;</div><div class="line">  return event ? event : window.event;</div><div class="line"> &#125;,</div><div class="line"> //获取事件对象目标的兼容性写法</div><div class="line"> getTarget: function(event)&#123;</div><div class="line">  return event.target || event.srcElement;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
@@ -366,8 +377,7 @@
   
 </nav>
 
-  
-  <!-- 来必力City版安装代码 -->
+    <!-- 来必力City版安装代码 -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTM1OS83OTIy">
   <script type="text/javascript">
    (function(d, s) {
@@ -385,6 +395,7 @@
 <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
 </div>
 <!-- City版安装代码已完成 -->
+  
 </article>
 
 
