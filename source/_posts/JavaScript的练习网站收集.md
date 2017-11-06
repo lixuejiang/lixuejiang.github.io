@@ -3,6 +3,9 @@ title: JavaScript练习网站收集
 date: 2016-11-01 11:02:17
 tags: [JavaScript]
 ---
+
+[![](https://badge.juejin.im/entry/58196046d203090055d96c77/likes.svg?style=flat-square)](https://juejin.im/entry/58196046d203090055d96c77/detail)
+
 在学习的过程中会发现很多知识点如果不在工作中运用或者手写带验证的话，很容易忘记。任何技能的掌握都是需要不断练习的。在此收集一些自己遇到的JavaScript练习的网站。
 
 ## [codewars](http://www.codewars.com/)
