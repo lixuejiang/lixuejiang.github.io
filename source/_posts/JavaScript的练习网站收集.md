@@ -34,3 +34,5 @@ nodeschool,有很多js和es6以及web相关的教程
 
 ## [https://www.hackerrank.com](https://www.hackerrank.com)
 一个英文的学习网站，类似oj的形式，有数据结构算法的课程，也有正则表达式等课程，质量还不错
+
+## [http://superherojs.com/](http://superherojs.com/)
